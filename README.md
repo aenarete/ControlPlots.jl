@@ -33,7 +33,7 @@ pkg"add PyPlotX"
 ## Usage
 
 Simple example:
-```
+```julia
 using PyPlotX
 
 X = 0:0.1:2pi
@@ -44,6 +44,6 @@ A plot window should pop up.
 
 You can now close the plot window.
 You can re-display the plot by typing:
-```
+```julia
 p
 ```
