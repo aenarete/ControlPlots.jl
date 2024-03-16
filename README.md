@@ -8,6 +8,7 @@ This package adds the following features to the PyPlot.jl package:
 
 - the result of a plot command is stored in a struct
 - this struct can be displayed again or stored in a file and loaded later
+#### TODO
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 - an XY plot can be created with the `plotxy()` function
@@ -53,5 +54,5 @@ save("plot.jld2", p)
 ```
 Now you restart Julia and load it with:
 ```julia
-load("plot.jld2")
+p = load("plot.jld2")
 ```
