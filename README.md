@@ -56,3 +56,4 @@ Now you restart Julia and load it with:
 ```julia
 p = load("plot.jld2")
 ```
+The plot is automatically displayed.
