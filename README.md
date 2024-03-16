@@ -15,17 +15,17 @@ This package adds the following features to the PyPlot.jl package:
 ## Installation
 ### On Linux
 First, install matplotlib:
-```
+```bash
 sudo apt install python3-matplotlib
 ```
 If not done yet, create a project:
-```
+```bash
 mkdir MyProject
 cd MyProject
 julia --project="."
 ```
 and install `PyPlotX`
-```
+```julia
 using Pkg
 pkg"add PyPlotX"
 ```
