@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $(basename $(pwd)) == "bin" ]]; then
+    cd ..
+fi
+
+export MPLBACKEND=qt5agg
+
+julia --project
