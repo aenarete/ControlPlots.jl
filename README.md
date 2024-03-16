@@ -9,7 +9,6 @@ This package adds the following features to the PyPlot.jl package:
 - the result of a plot command is stored in a struct
 - this struct can be displayed again or stored in a file and loaded later
 - an XY plot can be created with the `plotxy()` function
-#### TODO
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 
