@@ -47,3 +47,11 @@ You can re-display the plot by typing:
 ```julia
 p
 ```
+You can also save the plot under a name of your choice:
+```julia
+save("plot.jld2", p)
+```
+Now you restart Julia and load it with:
+```julia
+load("plot.jld2")
+```

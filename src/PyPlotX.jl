@@ -3,14 +3,23 @@ module PyPlotX
 import PyPlot as plt
 import PyPlot.show as plshow
 import Base.display
+import JLD2
 
-export plot, plt, plshow
+export plot, plt, load, save
 
 mutable struct Plot
     X
     Y
     label
     fig
+end
+
+function save(filename::String, p::Plot)
+    JLD2.save(filename, "plot", p)
+end
+
+function load(filename::String)
+    JLD2.load(filename)["plot"]
 end
 
 function plot(X, Y; label="", fig="")
