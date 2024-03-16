@@ -33,7 +33,7 @@ pkg"add PyPlotX"
 
 ## Usage
 
-Simple example:
+### Basic example
 ```julia
 using PyPlotX
 
@@ -57,3 +57,13 @@ Now you restart Julia and load it with:
 p = load("plot.jld2")
 ```
 The plot is automatically displayed.
+
+### XY-Plot
+```julia
+using PyPlotX
+
+T = 0:0.1:2pi
+X = sin.(T)
+Y = cos.(T)
+p = plotxy(X, Y);
+```
