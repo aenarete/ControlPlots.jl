@@ -1,4 +1,4 @@
-using PyPlotX
+using PyPlotExt
 using Test
 
 @testset "PyPlotX.jl" begin

@@ -1,4 +1,4 @@
-module PyPlotX
+module PyPlotExt
 
 import PyPlot as plt
 import PyPlot.show as plshow
