@@ -1,4 +1,4 @@
-using PyPlotX
+using PyPlotExt
 
 T = 0:0.1:2pi
 X = sin.(T)
