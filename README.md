@@ -57,6 +57,16 @@ p = load("plot.jld2")
 ```
 The plot is automatically displayed.
 
+### Multi-channel plot
+```julia
+using PyPlotX
+
+T = 0:0.1:2pi
+X = sin.(T)
+Y = cos.(T)
+p = plotx(T, X, Y);
+```
+
 ### XY-Plot
 ```julia
 using PyPlotX
