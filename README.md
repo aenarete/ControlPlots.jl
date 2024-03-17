@@ -27,7 +27,7 @@ julia --project="."
 and install `PyPlotX`
 ```julia
 using Pkg
-pkg"add PyPlotX"
+pkg"add https://github.com/aenarete/PyPlotX.jl"
 ```
 
 ### On Windows
@@ -41,7 +41,7 @@ Install Python, matplotlib and PyPlotX
 ```
 using Pkg
 ENV["PYTHON"]=""
-pkg"add PyPlotX"
+pkg"add https://github.com/aenarete/PyPlotX.jl"
 ```
 
 ## Usage
