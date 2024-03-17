@@ -78,15 +78,15 @@ using PyPlotX
 T = 0:0.1:2pi
 X = sin.(T)
 Y = cos.(T)
-p = plotx(T, X, Y)
+p = plotx(T, X, Y, fig="dual")
 ```
 
 ### XY-Plot
 ```julia
 using PyPlotX
 
-T = 0:0.1:2pi
+T = 0:0.1:2pi+0.1
 X = sin.(T)
 Y = cos.(T)
-p = plotxy(X, Y)
+p = plotxy(X, Y, fig="xy")
 ```
