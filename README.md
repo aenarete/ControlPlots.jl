@@ -30,6 +30,20 @@ using Pkg
 pkg"add PyPlotX"
 ```
 
+### On Windows
+If not done yet, create a project:
+```bash
+mkdir MyProject
+cd MyProject
+julia --project="."
+```
+Install Python, matplotlib and PyPlotX
+```
+using Pkg
+ENV["PYTHON"]=""
+pkg"add PyPlotX"
+```
+
 ## Usage
 
 ### Basic example
@@ -38,7 +52,7 @@ using PyPlotX
 
 X = 0:0.1:2pi
 Y = sin.(X)
-p = plot(X, Y);
+p = plot(X, Y)
 ```
 A plot window should pop up.
 
@@ -64,7 +78,7 @@ using PyPlotX
 T = 0:0.1:2pi
 X = sin.(T)
 Y = cos.(T)
-p = plotx(T, X, Y);
+p = plotx(T, X, Y)
 ```
 
 ### XY-Plot
@@ -74,5 +88,5 @@ using PyPlotX
 T = 0:0.1:2pi
 X = sin.(T)
 Y = cos.(T)
-p = plotxy(X, Y);
+p = plotxy(X, Y)
 ```
