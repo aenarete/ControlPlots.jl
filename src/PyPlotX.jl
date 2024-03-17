@@ -10,7 +10,8 @@ export plot, plotx, plotxy, plt, load, save
 mutable struct PlotX
     X
     Y
-    labels
+    xlabel
+    ylabels
     fig
     type::Int64
 end
@@ -23,19 +24,23 @@ function load(filename::String)
     JLD2.load(filename)["plot"]
 end
 
-function plot(X, Y; label="", fig="", disp=false)
+function plot(X, Y; xlabel="", ylabel="", fig="", disp=false)
     if disp
         if fig != ""
             plt.figure(fig)
         end
-        plt.plot(X, Y; label)
+        plt.plot(X, Y; label=ylabel)
+        if xlabel != ""
+            plt.xlabel(xlabel, fontsize=14); 
+        end
+        plt.ylabel(ylabel, fontsize=14); 
         plt.grid(true)
         plt.tight_layout()
     end
-    PlotX(X, Y, label, fig, 1)
+    PlotX(X, Y, xlabel, ylabel, fig, 1)
 end
 
-function plotx(X, Y...; labels=nothing, fig="", title="", disp=false)
+function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, fig="", title="", disp=false)
     if disp
         len=length(Y)
         fig_ = plt.figure(fig, figsize=(8, len*2))
@@ -51,8 +56,8 @@ function plotx(X, Y...; labels=nothing, fig="", title="", disp=false)
             if i==1
                 plt.suptitle(title, fontsize=14) # Super title
             end
-            if ! isnothing(labels)
-                lbl=labels[i]
+            if ! isnothing(ylabels)
+                lbl=ylabels[i]
             else
                 lbl=""
             end
@@ -65,11 +70,11 @@ function plotx(X, Y...; labels=nothing, fig="", title="", disp=false)
             end
             i+=1
         end
-        plt.xlabel("time [s]", fontsize=14)
+        plt.xlabel(xlabel, fontsize=14)
         
         plt.tight_layout()
     end
-    PlotX(collect(X), Y, labels, fig, 2)
+    PlotX(collect(X), Y, xlabel, ylabels, fig, 2)
 end
 
 function plotxy(X, Y; xlabel="", ylabel="", fig="", disp=false)
@@ -83,16 +88,16 @@ function plotxy(X, Y; xlabel="", ylabel="", fig="", disp=false)
         plt.grid(true)
         plt.tight_layout()
     end
-    PlotX(X, Y, [xlabel, ylabel], fig, 3)
+    PlotX(X, Y, xlabel, ylabel, fig, 3)
 end
 
 function display(P::PlotX)
     if P.type == 1
-        plot(P.X, P.Y; label=P.labels, fig=P.fig, disp=true)
+        plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, fig=P.fig, disp=true)
     elseif P.type == 2
-        plotx(P.X, P.Y...; labels=P.labels, fig=P.fig, disp=true)
+        plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, fig=P.fig, disp=true)
     else
-        plotxy(P.X, P.Y; xlabel=P.labels[1], ylabel=P.labels[2], fig=P.fig, disp=true)
+        plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, fig=P.fig, disp=true)
     end
     nothing
 end

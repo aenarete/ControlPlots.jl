@@ -47,12 +47,13 @@ pkg"add https://github.com/aenarete/PyPlotX.jl"
 ## Usage
 
 ### Basic example
+Lauch Julia with `julia --project`. Then execute:
 ```julia
 using PyPlotX
 
 X = 0:0.1:2pi
 Y = sin.(X)
-p = plot(X, Y)
+p = plot(X, Y, xlabel="X", ylabel="sin", fig="basic")
 ```
 A plot window should pop up.
 
@@ -76,9 +77,9 @@ The plot is automatically displayed.
 using PyPlotX
 
 T = 0:0.1:2pi
-X = sin.(T)
-Y = cos.(T)
-p = plotx(T, X, Y, fig="dual")
+Y1 = sin.(T)
+Y2 = cos.(T)
+p = plotx(T, Y1, Y2; ylabels=["Y1", "Y2"], fig="dual")
 ```
 
 ### XY-Plot
@@ -88,5 +89,5 @@ using PyPlotX
 T = 0:0.1:2pi+0.1
 X = sin.(T)
 Y = cos.(T)
-p = plotxy(X, Y, fig="xy")
+p = plotxy(X, Y, xlabel="X", ylabel="Y", fig="xy")
 ```
