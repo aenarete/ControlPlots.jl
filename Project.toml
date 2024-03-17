@@ -10,6 +10,7 @@ PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
 [compat]
 julia = "1"
 PyPlot = "~2.11"
+JLD2 = "~0.4"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
