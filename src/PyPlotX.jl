@@ -75,7 +75,7 @@ end
 function plotxy(X, Y; xlabel="", ylabel="", fig="", disp=false)
     if disp
         if fig != ""
-            plt.figure(fig)
+            plt.figure(fig, figsize=(6,6))
         end
         plt.plot(X, Y)
         plt.xlabel(xlabel, fontsize=14);
@@ -92,7 +92,7 @@ function display(P::PlotX)
     elseif P.type == 2
         plotx(P.X, P.Y...; labels=P.labels, fig=P.fig, disp=true)
     else
-        plotxy(P.X, P.Y; xlabel=P.labels[1], ylabel=P.labels[2], disp=true)
+        plotxy(P.X, P.Y; xlabel=P.labels[1], ylabel=P.labels[2], fig=P.fig, disp=true)
     end
     nothing
 end
