@@ -1,7 +1,7 @@
-using PyPlotExt
+using ControlPlots
 using Test
 
-@testset "PyPlotX.jl" begin
+@testset "ControlPlots.jl" begin
     X = 0:0.1:2pi
     Y = sin.(X)
     p = plot(X, Y, xlabel="X", ylabel="Y", fig="first")

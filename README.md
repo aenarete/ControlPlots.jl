@@ -1,16 +1,22 @@
-# PyPlotExt
+# ControlPlots
 
 [![Build Status](https://github.com/aenarete/PyPlotX.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/aenarete/PyPlotX.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 ## Introduction
 
-This package adds the following features to the PyPlot.jl package:
+This package provides the following features:
 
 - the parameters of the plot commands are stored in a struct and returned
 - this struct can be displayed again or stored in a file and loaded later
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 - an XY plot can be created with the `plotxy()` function
+
+## TODO
+- add support for PythonPlot
+- allow changing of the caption
+- the `save()` function should allow storing a plot as jld2, pdf or png file
+- add bode plots
 
 ## Installation
 ### On Linux
@@ -27,7 +33,7 @@ julia --project="."
 and install `PyPlotX`
 ```julia
 using Pkg
-pkg"add https://github.com/aenarete/PyPlotX.jl"
+pkg"add https://github.com/aenarete/ControlPlots.jl"
 ```
 
 ### On Windows
@@ -41,13 +47,13 @@ Install Python, matplotlib and PyPlotX
 ```
 using Pkg
 ENV["PYTHON"]=""
-pkg"add https://github.com/aenarete/PyPlotX.jl"
+pkg"add https://github.com/aenarete/ControlPlots.jl"
 ```
 
 ## Usage
 
 ### Basic example
-Lauch Julia with `julia --project`. Then execute:
+Launch Julia with `julia --project`. Then execute:
 ```julia
 using PyPlotX
 
