@@ -1,6 +1,6 @@
 # ControlPlots
 
-[![Build Status](https://github.com/aenarete/PyPlotX.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/aenarete/PyPlotX.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/aenarete/ControlPlots.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/aenarete/ControlPlots.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 ## Introduction
 
@@ -30,7 +30,7 @@ mkdir MyProject
 cd MyProject
 julia --project="."
 ```
-and install `PyPlotX`
+and install `ControlPlots`
 ```julia
 using Pkg
 pkg"add https://github.com/aenarete/ControlPlots.jl"
@@ -43,7 +43,7 @@ mkdir MyProject
 cd MyProject
 julia --project="."
 ```
-Install Python, matplotlib and PyPlotX
+Install Python, matplotlib and ControlPlots
 ```
 using Pkg
 ENV["PYTHON"]=""
@@ -55,7 +55,7 @@ pkg"add https://github.com/aenarete/ControlPlots.jl"
 ### Basic example
 Launch Julia with `julia --project`. Then execute:
 ```julia
-using PyPlotX
+using ControlPlots
 
 X = 0:0.1:2pi
 Y = sin.(X)
@@ -80,7 +80,7 @@ The plot is automatically displayed.
 
 ### Multi-channel plot
 ```julia
-using PyPlotX
+using ControlPlots
 
 T = 0:0.1:2pi
 Y1 = sin.(T)
@@ -90,7 +90,7 @@ p = plotx(T, Y1, Y2; ylabels=["Y1", "Y2"], fig="dual")
 
 ### XY-Plot
 ```julia
-using PyPlotX
+using ControlPlots
 
 T = 0:0.1:2pi+0.1
 X = sin.(T)
