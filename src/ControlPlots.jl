@@ -99,6 +99,8 @@ function display(P::PlotX)
     else
         plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, fig=P.fig, disp=true)
     end
+    plt.pause(0.01)
+    plt.show(block=false)
     nothing
 end
 
