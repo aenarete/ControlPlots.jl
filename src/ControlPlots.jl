@@ -5,7 +5,7 @@ import PyPlot.show as plshow
 import Base.display
 import JLD2
 
-export plot, plotx, plotxy, plt, load, save
+export plot, plotn, plotx, plotxy, plt, load, save
 
 mutable struct PlotX
     X
@@ -25,7 +25,7 @@ function load(filename::String)
     JLD2.load(filename)["plot"]
 end
 
-function plot(X, Ys::Vector{AbstractVector{Float64}}; xlabel="", ylabel="",
+function plotn(X, Ys; xlabel="", ylabel="",
               labels=nothing, fig="", disp=false)
     if disp
         if fig != ""
@@ -132,7 +132,7 @@ function display(P::PlotX)
     elseif P.type == 3
         plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, fig=P.fig, disp=true)
     else
-        plot(P.X, P.Y; xlabel=P.xlabel, labels=P.labels, fig=P.fig, disp=true)
+        plotn(P.X, P.Y; xlabel=P.xlabel, labels=P.labels, fig=P.fig, disp=true)
     end
     plt.pause(0.01)
     plt.show(block=false)
