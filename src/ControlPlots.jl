@@ -10,6 +10,7 @@ export plot, plotx, plotxy, plt, load, save
 mutable struct PlotX
     X
     Y
+    labels
     xlabel
     ylabels
     fig
@@ -22,6 +23,38 @@ end
 
 function load(filename::String)
     JLD2.load(filename)["plot"]
+end
+
+function plot(X, Ys::Vector{AbstractVector{Float64}}; xlabel="", ylabel="",
+              labels=nothing, fig="", disp=false)
+    if disp
+        if fig != ""
+            plt.figure(fig)
+        end
+        for (i, Y) in pairs(Ys)
+            if isnothing(labels)
+                plt.plot(X, Y)
+            else
+                if isnothing(labels[i]) || labels[i]==""
+                    plt.plot(X, Y)
+                else
+                    plt.plot(X, Y; label=labels[i])
+                end
+            end
+        end
+        if xlabel != ""
+            plt.xlabel(xlabel, fontsize=14); 
+        end
+        if ylabel != ""
+            plt.ylabel(ylabel, fontsize=14); 
+        end
+        plt.grid(true)
+        plt.legend()
+        plt.tight_layout()
+    else
+        println("OK")
+    end
+    PlotX(X, Ys, labels, xlabel, ylabel, fig, 4)
 end
 
 function plot(X, Y; xlabel="", ylabel="", fig="", disp=false)
@@ -37,7 +70,7 @@ function plot(X, Y; xlabel="", ylabel="", fig="", disp=false)
         plt.grid(true)
         plt.tight_layout()
     end
-    PlotX(X, Y, xlabel, ylabel, fig, 1)
+    PlotX(X, Y, nothing, xlabel, ylabel, fig, 1)
 end
 
 function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, fig="", title="", disp=false)
@@ -74,7 +107,7 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, fig="", title="", di
         
         plt.tight_layout()
     end
-    PlotX(collect(X), Y, xlabel, ylabels, fig, 2)
+    PlotX(collect(X), Y, nothing, xlabel, ylabels, fig, 2)
 end
 
 function plotxy(X, Y; xlabel="", ylabel="", fig="", disp=false)
@@ -88,7 +121,7 @@ function plotxy(X, Y; xlabel="", ylabel="", fig="", disp=false)
         plt.grid(true)
         plt.tight_layout()
     end
-    PlotX(X, Y, xlabel, ylabel, fig, 3)
+    PlotX(X, Y, xlabel, nothing, ylabel, fig, 3)
 end
 
 function display(P::PlotX)
@@ -96,8 +129,10 @@ function display(P::PlotX)
         plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, fig=P.fig, disp=true)
     elseif P.type == 2
         plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, fig=P.fig, disp=true)
-    else
+    elseif P.type == 3
         plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, fig=P.fig, disp=true)
+    else
+        plot(P.X, P.Y; xlabel=P.xlabel, labels=P.labels, fig=P.fig, disp=true)
     end
     plt.pause(0.01)
     plt.show(block=false)

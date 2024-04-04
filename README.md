@@ -97,3 +97,14 @@ X = sin.(T)
 Y = cos.(T)
 p = plotxy(X, Y, xlabel="X", ylabel="Y", fig="xy")
 ```
+
+### n-in-one Plot
+You can plot multiple time series in one plot, e.g. like this:
+```julia
+using ControlPlots
+
+x   = 1.5*ones(11)
+y   = 1:0.1:2
+out = min.(x, y)
+plot(1:11, [x, y, out]; labels=["input_a", "input_b", "output"])
+```
