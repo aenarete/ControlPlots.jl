@@ -57,6 +57,11 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
     PlotX(X, Ys, labels, xlabel, ylabel, fig, 4)
 end
 
+function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", disp=false)
+    X = 1:length(Y)
+    plot(X, Y; xlabel, ylabel, fig, disp)
+end
+
 function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", disp=false)
     if disp
         if fig != ""
@@ -121,7 +126,7 @@ function plotxy(X, Y; xlabel="", ylabel="", fig="", disp=false)
         plt.grid(true)
         plt.tight_layout()
     end
-    PlotX(X, Y, xlabel, nothing, ylabel, fig, 3)
+    PlotX(X, Y, nothing, xlabel, ylabel, fig, 3)
 end
 
 function display(P::PlotX)
