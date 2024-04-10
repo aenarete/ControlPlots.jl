@@ -71,7 +71,8 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", disp
         if xlabel != ""
             plt.xlabel(xlabel, fontsize=14); 
         end
-        plt.ylabel(ylabel, fontsize=14); 
+        plt.ylabel(ylabel, fontsize=14);
+        plt.xlim(X[begin], X[end])
         plt.grid(true)
         plt.tight_layout()
     end
@@ -100,7 +101,7 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, fig="", title="", di
                 lbl=""
             end
             plt.plot(X, y, label=lbl)
-            plt.xlim(0, X[end])
+            plt.xlim(X[begin], X[end])
             plt.ylabel(lbl, fontsize=14);  
             plt.grid(true)
             if i < len
