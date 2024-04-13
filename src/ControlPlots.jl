@@ -139,7 +139,7 @@ function display(P::PlotX)
     elseif P.type == 3
         plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, fig=P.fig, ysize=P.ysize, disp=true)
     else
-        plot(P.X, P.Y; xlabel=P.xlabel, labels=P.labels, fig=P.fig, ysize=P.ysize, disp=true)
+        plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, labels=P.labels, fig=P.fig, ysize=P.ysize, disp=true)
     end
     plt.pause(0.01)
     plt.show(block=false)
