@@ -17,6 +17,7 @@ mutable struct PlotX
     xlims
     ylims
     ann
+    scatter
     fig
     type::Int64
 end
@@ -30,7 +31,7 @@ function load(filename::String)
 end
 
 function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
-              labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, fig="", ysize=14, disp=false)
+              labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
     if disp
         if fig != ""
             plt.figure(fig)
@@ -63,7 +64,7 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
     else
         println("OK")
     end
-    PlotX(X, Ys, labels, xlabel, ylabel, ysize, xlims, ylims, ann, fig, 4)
+    PlotX(X, Ys, labels, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 4)
 end
 
 function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", ysize=14, disp=false)
@@ -71,7 +72,7 @@ function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", ysize=1
     plot(X, Y; xlabel, ylabel, fig, disp, ysize)
 end
 
-function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing, fig="", ysize=14, disp=false)
+function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
     if disp
         if fig != ""
             plt.figure(fig)
@@ -92,14 +93,17 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
         if ! isnothing(ann)
             plt.annotate(ann[3],  xy=(ann[1], ann[2]), fontsize = 14)
         end
+        if scatter
+            plt.scatter(X, Y; s=0.5, c="red", alpha=0.5)
+        end
         plt.grid(true)
         plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
-    PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, fig, 1)
+    PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 1)
 end
 
-function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, xlims=nothing, ylims=nothing, ann=nothing, fig="", title="", ysize=14, disp=false)
+function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", title="", ysize=14, disp=false)
     if disp
         len=length(Y)
         fig_ = plt.figure(fig, figsize=(8, len*2))
@@ -134,10 +138,10 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, xlims=nothing, ylims
         
         plt.tight_layout()
     end
-    PlotX(collect(X), Y, nothing, xlabel, ylabels, ysize, xlims, ylims, ann, fig, 2)
+    PlotX(collect(X), Y, nothing, xlabel, ylabels, ysize, xlims, ylims, ann, scatter, fig, 2)
 end
 
-function plotxy(X, Y; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing, fig="", ysize=14, disp=false)
+function plotxy(X, Y; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
     if disp
         if fig != ""
             plt.figure(fig, figsize=(6,6))
@@ -149,18 +153,18 @@ function plotxy(X, Y; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=no
         plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
-    PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, fig, 3)
+    PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 3)
 end
 
 function display(P::PlotX)
     if P.type == 1
-        plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, fig=P.fig, ysize=P.ysize, disp=true)
+        plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
     elseif P.type == 2
-        plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, fig=P.fig, ysize=P.ysize, disp=true)
+        plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
     elseif P.type == 3
-        plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, fig=P.fig, ysize=P.ysize, disp=true)
+        plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
     else
-        plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, labels=P.labels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, fig=P.fig, ysize=P.ysize, disp=true)
+        plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, labels=P.labels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
     end
     plt.pause(0.01)
     plt.show(block=false)
