@@ -94,7 +94,7 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
             plt.annotate(ann[3],  xy=(ann[1], ann[2]), fontsize = 14)
         end
         if scatter
-            plt.scatter(X, Y; s=0.5, c="red", alpha=0.5)
+            plt.scatter(X, Y; s=20, c="red", alpha=1)
         end
         plt.grid(true)
         plt.grid(which="major", color="#DDDDDD")
