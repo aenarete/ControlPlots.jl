@@ -51,6 +51,10 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
         if ylabel != ""
             plt.ylabel(ylabel, fontsize=ysize); 
         end
+        if ! isnothing(xlims)
+            println("xlims: $xlims")
+            plt.xlim(xlims)
+        end
         plt.grid(true)
         plt.legend()
         plt.tight_layout()
@@ -75,7 +79,14 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
             plt.xlabel(xlabel, fontsize=14); 
         end
         plt.ylabel(ylabel; fontsize=ysize);
-        plt.xlim(X[begin], X[end])
+        if isnothing(xlims)
+            plt.xlim(X[begin], X[end])
+        else
+            plt.xlim(xlims)
+        end
+        if ! isnothing(ylims)
+            plt.ylim(ylims)
+        end
         plt.grid(true)
         plt.tight_layout()
     end
