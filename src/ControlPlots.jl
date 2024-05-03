@@ -57,6 +57,7 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
             plt.xlim(xlims)
         end
         plt.grid(true)
+        plt.grid(which="major", color="#DDDDDD")
         plt.legend()
         plt.tight_layout()
     else
@@ -92,6 +93,7 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
             plt.annotate(ann[3],  xy=(ann[1], ann[2]), fontsize = 14)
         end
         plt.grid(true)
+        plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
     PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, fig, 1)
@@ -122,6 +124,7 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, xlims=nothing, ylims
             plt.xlim(X[begin], X[end])
             plt.ylabel(lbl; fontsize=ysize);  
             plt.grid(true)
+            plt.grid(which="major", color="#DDDDDD")
             if i < len
                 plt.setp(ax[i].get_xticklabels(), visible=false)
             end
@@ -143,6 +146,7 @@ function plotxy(X, Y; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=no
         plt.xlabel(xlabel, fontsize=14);
         plt.ylabel(ylabel, fontsize=ysize);  
         plt.grid(true)
+        plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
     PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, fig, 3)
