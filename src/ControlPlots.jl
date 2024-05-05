@@ -255,6 +255,9 @@ end
 
 plot2d = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
     function(pos, reltime=0.0; kwargs...)
+        if reltime == 0.0
+            lines, sc, txt = nothing, nothing, nothing
+        end
         lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, kwargs...)
     end
 end
