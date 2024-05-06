@@ -217,7 +217,6 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zo
         plt.ylabel("z [m]", fontsize=14)
         plt.grid(true)
         plt.grid(which="major", color="#DDDDDD")
-        display(plt.gcf())
     else
         lines[1].set_xdata(x)
         lines[1].set_ydata(z)
@@ -248,9 +247,9 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zo
             plt.xlim(0, x_max+5)
             plt.ylim(0, z_max+5)
         end
-        plt.gcf().canvas.draw()
     end
-    sleep(0.01)
+    plt.pause(0.01)
+    plt.show(block=false)
     lines, sc, txt
 end
 
