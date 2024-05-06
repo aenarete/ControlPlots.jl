@@ -217,6 +217,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zo
         plt.ylabel("z [m]", fontsize=14)
         plt.grid(true)
         plt.grid(which="major", color="#DDDDDD")
+        display(plt.gcf())
     else
         lines[1].set_xdata(x)
         lines[1].set_ydata(z)
