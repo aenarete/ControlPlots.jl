@@ -13,7 +13,7 @@ This package provides the following features:
 - pan and zoom are supported
 - LaTeX can be used for the labels
 - the parameters of the plot commands are stored in a struct and returned
-- this struct can be displayed again or stored in a file and loaded later
+- this struct can be displayed again or stored in a file and loaded, the labels etc can be edited and a new plot can be displayed or exported
 
 <details>
   <summary>Planned features</summary>
