@@ -88,6 +88,7 @@ Y1 = sin.(T)
 Y2 = cos.(T)
 p = plotx(T, Y1, Y2; ylabels=["Y1", "Y2"], fig="dual")
 ```
+<p align="center"><img src="./docs/multi-channel.png" width="400" /></p>
 
 ### XY-Plot
 ```julia
