@@ -61,7 +61,8 @@ X = 0:0.1:2pi
 Y = sin.(X)
 p = plot(X, Y, xlabel="X", ylabel="sin", fig="basic")
 ```
-A plot window should pop up.
+A plot window like this should pop up:
+<p align="center"><img src="./docs/basic.png" width="400" /></p>
 
 You can now close the plot window.
 You can re-display the plot by typing:
