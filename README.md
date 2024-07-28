@@ -106,6 +106,7 @@ Y2 = cos.(T)
 p = plotx(T, Y1, Y2; ylabels=["Y1", "Y2"], fig="dual")
 ```
 <p align="center"><img src="./docs/multi-channel.png" width="500" /></p>
+The optional parameter `ysize` can be used to change the size of the y-axis labels. The default value is 14 points.
 
 ### XY-Plot
 ```julia
