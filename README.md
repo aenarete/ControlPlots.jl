@@ -47,7 +47,7 @@ Install Python, matplotlib and ControlPlots
 ```
 using Pkg
 ENV["PYTHON"]=""
-pkg"add https://github.com/aenarete/ControlPlots.jl"
+pkg"add ControlPlots"
 ```
 
 ## Usage
