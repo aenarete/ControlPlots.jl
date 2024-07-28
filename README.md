@@ -138,8 +138,16 @@ plot(1:11, [x, y, out]; labels=["input_a", "input_b", "output"], fig="2-in-one")
 ### Advanced usage
 This library uses Matplotlib as backend, and you can change all settings of [rcParams](https://matplotlib.org/stable/users/explain/customizing.html#matplotlibrc-sample) as you wish. Example: Using an already installed LaTeX installation for high-quality rendering of LaTeX labels and other text:
 
+#### More beautiful LaTeX
 ```
 rcParams = plt.PyDict(plt.matplotlib."rcParams")
 rcParams["text.usetex"] = true
 ```
 Just add this at the beginning or your script. You can change fonts, font sizes, colors etc.
+
+#### More beautiful GUI
+If you add the following line to your `.bashrc` file or to the script you use to start Julia:
+```
+export MPLBACKEND=qt5agg
+```
+you get a more beautiful GUI. This does not work on every PC, therefore it is not the default.
