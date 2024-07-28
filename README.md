@@ -143,7 +143,7 @@ This library uses Matplotlib as backend, and you can change all settings of [rcP
 rcParams = plt.PyDict(plt.matplotlib."rcParams")
 rcParams["text.usetex"] = true
 ```
-Just add this at the beginning or your script. You can change fonts, font sizes, colors etc.
+Just add this at the beginning of your script. You can change fonts, font sizes, colors etc.
 
 #### More beautiful GUI
 If you add the following line to your `.bashrc` file or to the script you use to start Julia:
