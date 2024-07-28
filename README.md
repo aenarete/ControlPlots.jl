@@ -88,17 +88,18 @@ Y1 = sin.(T)
 Y2 = cos.(T)
 p = plotx(T, Y1, Y2; ylabels=["Y1", "Y2"], fig="dual")
 ```
-<p align="center"><img src="./docs/multi-channel.png" width="400" /></p>
+<p align="center"><img src="./docs/multi-channel.png" width="500" /></p>
 
 ### XY-Plot
 ```julia
 using ControlPlots
 
-T = 0:0.1:2pi+0.1
+T = 0:0.05:2pi+0.1
 X = sin.(T)
-Y = cos.(T)
+Y = cos.(3T)
 p = plotxy(X, Y, xlabel="X", ylabel="Y", fig="xy")
 ```
+<p align="center"><img src="./docs/xy-plot.png" width="400" /></p>
 
 ### n-in-one Plot
 You can plot multiple time series in one plot, e.g. like this:
