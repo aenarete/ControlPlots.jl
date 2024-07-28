@@ -14,11 +14,15 @@ This package provides the following features:
 - pan and zoom are supported
 - LaTeX can be used for the labels
 
+<details>
+  <summary>Planned features</summary>
+
 ## TODO
 - add support for PythonPlot
 - allow changing of the caption
 - the `save()` function should allow storing a plot as jld2, pdf or png file
 - add bode plots
+</details>
 
 ## Installation
 <details>
