@@ -113,3 +113,4 @@ y   = 1:0.1:2
 out = min.(x, y)
 plot(1:11, [x, y, out]; labels=["input_a", "input_b", "output"], fig="2-in-one")
 ```
+<p align="center"><img src="./docs/n-in-one.png" width="400" /></p>
