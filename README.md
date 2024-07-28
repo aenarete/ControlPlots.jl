@@ -57,14 +57,16 @@ pkg"add ControlPlots"
 ### Basic example
 Launch Julia with `julia --project`. Then execute:
 ```julia
-using ControlPlots
+using ControlPlots, LaTeXStrings
 
 X = 0:0.1:2pi
 Y = sin.(X)
-p = plot(X, Y, xlabel="X", ylabel="sin", fig="basic")
+p = plot(X, Y, xlabel=L"\alpha = [0..2\pi]", ylabel="sin", fig="basic")
 ```
 A plot window like this should pop up:
 <p align="center"><img src="./docs/basic.png" width="400" /></p>
+
+The package `LaTeXStrings` is only required if you want to use LaTeX for any of your labels like in the example above. You need to prefix LaTeX strings with the letter `L`.
 
 You can now close the plot window.
 You can re-display the plot by typing:
