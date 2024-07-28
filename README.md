@@ -11,6 +11,8 @@ This package provides the following features:
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 - an XY plot can be created with the `plotxy()` function
+- pan and zoom are supported
+- LaTeX can be used for the labels
 
 ## TODO
 - add support for PythonPlot
