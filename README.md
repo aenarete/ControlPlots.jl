@@ -21,6 +21,9 @@ This package provides the following features:
 - add bode plots
 
 ## Installation
+<details>
+  <summary>Installation on Linux</summary>
+  
 ### On Linux
 First, install matplotlib:
 ```bash
@@ -37,6 +40,10 @@ and install `ControlPlots`
 using Pkg
 pkg"add ControlPlots"
 ```
+  
+</details>
+<details>
+  <summary>Installation on Windows</summary>
 
 ### On Windows
 If not done yet, create a project:
@@ -51,6 +58,7 @@ using Pkg
 ENV["PYTHON"]=""
 pkg"add ControlPlots"
 ```
+</details>
 
 ## Usage
 
