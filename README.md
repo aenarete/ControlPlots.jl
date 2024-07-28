@@ -33,7 +33,7 @@ julia --project="."
 and install `ControlPlots`
 ```julia
 using Pkg
-pkg"add https://github.com/aenarete/ControlPlots.jl"
+pkg"add ControlPlots"
 ```
 
 ### On Windows
