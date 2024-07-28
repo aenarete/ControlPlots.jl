@@ -134,3 +134,12 @@ out = min.(x, y)
 plot(1:11, [x, y, out]; labels=["input_a", "input_b", "output"], fig="2-in-one")
 ```
 <p align="center"><img src="./docs/n-in-one.png" width="400" /></p>
+
+### Advanced usage
+This library uses Matplotlib as backend, and you can change all settings of [rcParams](https://matplotlib.org/stable/users/explain/customizing.html#matplotlibrc-sample) as you wish. Example: Using an already installed LaTeX installation for high-quality rendering of LaTeX labels and other text:
+
+```
+rcParams = plt.PyDict(plt.matplotlib."rcParams")
+rcParams["text.usetex"] = true
+```
+Just add this at the beginning or your script. You can change fonts, font sizes, colors etc.
