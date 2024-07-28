@@ -79,6 +79,7 @@ save("plot.jld2", p)
 ```
 Now you restart Julia and load it with:
 ```julia
+using ControlPlots
 p = load("plot.jld2")
 ```
 The plot is automatically displayed.
