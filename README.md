@@ -6,13 +6,14 @@
 
 This package provides the following features:
 
-- the parameters of the plot commands are stored in a struct and returned
-- this struct can be displayed again or stored in a file and loaded later
+- simple plots can be created with the `plot()` function
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 - an XY plot can be created with the `plotxy()` function
 - pan and zoom are supported
 - LaTeX can be used for the labels
+- the parameters of the plot commands are stored in a struct and returned
+- this struct can be displayed again or stored in a file and loaded later
 
 <details>
   <summary>Planned features</summary>
@@ -23,6 +24,9 @@ This package provides the following features:
 - the `save()` function should allow storing a plot as jld2, pdf or png file
 - add bode plots
 </details>
+
+The goal of this package is to provide simple plots for control system developers and students.
+
 
 ## Installation
 <details>
