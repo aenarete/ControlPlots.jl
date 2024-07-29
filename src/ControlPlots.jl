@@ -30,118 +30,9 @@ function load(filename::String)
     JLD2.load(filename)["plot"]
 end
 
-function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
-              labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
-    if disp
-        if fig != ""
-            plt.figure(fig)
-        end
-        for (i, Y) in pairs(Ys)
-            if isnothing(labels)
-                plt.plot(X, Y)
-            else
-                if isnothing(labels[i]) || labels[i]==""
-                    plt.plot(X, Y)
-                else
-                    plt.plot(X, Y; label=labels[i])
-                end
-            end
-        end
-        if xlabel != ""
-            plt.xlabel(xlabel, fontsize=14); 
-        end
-        if ylabel != ""
-            plt.ylabel(ylabel, fontsize=ysize); 
-        end
-        if ! isnothing(xlims)
-            println("xlims: $xlims")
-            plt.xlim(xlims)
-        end
-        plt.grid(true)
-        plt.grid(which="major", color="#DDDDDD")
-        plt.legend()
-        plt.tight_layout()
-    else
-        println("OK")
-    end
-    PlotX(X, Ys, labels, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 4)
-end
-
-function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", ysize=14, disp=false)
-    X = 1:length(Y)
-    plot(X, Y; xlabel, ylabel, fig, disp, ysize)
-end
-
-function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing, 
-              scatter=false, fig="", ysize=14, disp=false)
-    if disp
-        if fig != ""
-            plt.figure(fig)
-        end
-        plt.plot(X, Y; label=ylabel)
-        if xlabel != ""
-            plt.xlabel(xlabel, fontsize=14); 
-        end
-        plt.ylabel(ylabel; fontsize=ysize);
-        if isnothing(xlims)
-            plt.xlim(X[begin], X[end])
-        else
-            plt.xlim(xlims)
-        end
-        if ! isnothing(ylims)
-            plt.ylim(ylims)
-        end
-        if ! isnothing(ann)
-            plt.annotate(ann[3],  xy=(ann[1], ann[2]), fontsize = 14)
-        end
-        if scatter
-            plt.scatter(X, Y; s=24, c="red", alpha=1)
-        end
-        plt.grid(true)
-        plt.grid(which="major", color="#DDDDDD")
-        plt.tight_layout()
-    end
-    PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 1)
-end
-
-function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, fig="", title="", ysize=14, disp=false)
-    if disp
-        len=length(Y)
-        fig_ = plt.figure(fig, figsize=(8, len*2))
-        i=1
-        ax=[]
-        for y in Y
-            subplot=100len+10+i
-            if i==1
-                push!(ax, plt.subplot(subplot))
-            else
-                push!(ax, plt.subplot(subplot, sharex=ax[1]))
-            end
-            if i==1
-                plt.suptitle(title; fontsize=14) # Super title
-            end
-            if ! isnothing(ylabels)
-                lbl=ylabels[i]
-            else
-                lbl=""
-            end
-            plt.plot(X, y, label=lbl)
-            plt.xlim(X[begin], X[end])
-            plt.ylabel(lbl; fontsize=ysize);  
-            plt.grid(true)
-            plt.grid(which="major", color="#DDDDDD")
-            if i < len
-                plt.setp(ax[i].get_xticklabels(), visible=false)
-            end
-            i+=1
-        end
-        plt.xlabel(xlabel, fontsize=14)
-        
-        plt.tight_layout()
-    end
-    PlotX(collect(X), Y, nothing, xlabel, ylabels, ysize, xlims, ylims, ann, scatter, fig, 2)
-end
+include("plot.jl")
+include("plotx.jl")
+include("plot2d.jl")
 
 function plotxy(X, Y; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing, 
                 scatter=false, fig="", ysize=14, disp=false)
@@ -177,7 +68,5 @@ function display(P::PlotX)
     plt.show(block=false)
     nothing
 end
-
-include("plot2d.jl")
 
 end
