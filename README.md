@@ -135,6 +135,16 @@ plot(1:11, [x, y, out]; labels=["input_a", "input_b", "output"], fig="2-in-one")
 ```
 <p align="center"><img src="./docs/n-in-one.png" width="400" /></p>
 
+### dual y-axis
+```
+using ControlPlots
+
+T = 0:0.05:2pi+0.1
+POS_Z = sin.(T)
+VEL_Z = 5*cos.(T)
+plot(T, POS_Z, VEL_Z; xlabel="time [s]", ylabels=["pos_z [m]", "vel_z [m/s]"], labels=["pos_z [m]", "vel_z [m/s]"])
+```
+
 ### Advanced usage
 This library uses Matplotlib as backend, and you can change all settings of [rcParams](https://matplotlib.org/stable/users/explain/customizing.html#matplotlibrc-sample) as you wish. Example: Using an already installed LaTeX installation for high-quality rendering of LaTeX labels and other text:
 
