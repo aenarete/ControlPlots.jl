@@ -131,18 +131,20 @@ using ControlPlots
 x   = 1.5*ones(11)
 y   = 1:0.1:2
 out = min.(x, y)
-plot(1:11, [x, y, out]; labels=["input_a", "input_b", "output"], fig="2-in-one")
+plot(1:11, [x, y, out]; labels=["input_a", "input_b", "output"], 
+     fig="2-in-one")
 ```
 <p align="center"><img src="./docs/n-in-one.png" width="400" /></p>
 
-### dual y-axis
-```
+### Dual y-axis
+```julia
 using ControlPlots
 
 T = 0:0.05:2pi+0.1
 POS_Z = sin.(T)
 VEL_Z = 5*cos.(T)
-plot(T, POS_Z, VEL_Z; xlabel="time [s]", ylabels=["pos_z [m]", "vel_z [m/s]"], 
+plot(T, POS_Z, VEL_Z; xlabel="time [s]", 
+     ylabels=["pos_z [m]", "vel_z [m/s]"], 
      labels=["pos_z", "vel_z"], fig="dual_y-axis")
 ```
 <p align="center"><img src="./docs/dual_y-axis.png" width="400" /></p>
