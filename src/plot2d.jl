@@ -1,5 +1,5 @@
 function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", 
-                 dz_zoom= 1.5, dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, lines, sc, txt)
+                 dz_zoom= 1.5, dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
     x = Float64[] 
     z = Float64[]
     for i in eachindex(pos)
@@ -23,8 +23,11 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="",
         push!(lines, line)
         sc  = plt.scatter(x, z; s=25, color="red") 
         if zoom
+            if isnothing(xy)
+                xy=(x_max, z_max+dz_zoom)
+            end
             txt = plt.annotate("t=$(round(reltime,digits=1)) s",  
-                xy=(x_max, z_max+dz_zoom), fontsize = 14)
+                xy, fontsize = 14)
             if isnothing(xlim)
                 plt.xlim(x_max-15.0, x_max+5)
             else
@@ -36,8 +39,10 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="",
                 plt.ylim(ylim)
             end
         else
-            txt = plt.annotate("t=$(round(reltime,digits=1)) s",  
-            xy=(x_max+dx, z_max+dz), fontsize = 14)
+            if isnothing(xy)
+                xy=(x_max+dx, z_max+dz)
+            end
+            txt = plt.annotate("t=$(round(reltime,digits=1)) s",  xy, fontsize = 14)
             if isnothing(xlim)
                 plt.xlim(0, x_max+5)
             else
