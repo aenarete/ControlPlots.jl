@@ -35,6 +35,45 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
     PlotX(X, Ys, labels, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 4)
 end
 
+function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Number}; 
+    xlabel="", ylabels=["", ""], labels=["", ""], 
+    xlims=nothing, ylims=nothing, ann=nothing, scatter=false,
+    fig="", ysize=14, disp=false)
+    if length(Y1) == 1
+        plot(X, Y1[1], Y2; xlabel=xlabel, ylabels, labels, xlims, ylims, ann, scatter, fig, ysize, disp)
+    else
+        if disp
+            if fig != ""
+                plt.figure(fig)
+            end
+            colors=["green", "grey", "red"]
+            lns = []
+            for (i, Y) in pairs(Y1)
+                ln, = plt.plot(X, Y; label=labels[i], color=colors[i])
+                push!(lns, ln)
+                if i==1 && xlabel != ""
+                    plt.xlabel(xlabel, fontsize=14);                     
+                    if ylabels != ["", ""]
+                        plt.ylabel(ylabels[1], fontsize=ysize); 
+                    end
+                end
+            end
+            plt.twinx()
+            ln, = plt.plot(X, Y2; label=labels[3], color=colors[end])
+            push!(lns, ln)
+            plt.ylabel(ylabels[2], fontsize=ysize); 
+            plt.grid(true)
+            plt.grid(which="major", color="#DDDDDD")
+            plt.legend(lns, labels, loc="best")
+            plt.tight_layout()
+        else
+            println("OK")
+        end
+        PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, xlims, ylims, ann, scatter, fig, 5)
+    end
+    
+end
+
 function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number}; 
               xlabel="", ylabels=["", ""], labels=["", ""], 
               xlims=nothing, ylims=nothing, ann=nothing, scatter=false,
