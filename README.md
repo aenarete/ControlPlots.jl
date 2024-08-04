@@ -142,8 +142,10 @@ using ControlPlots
 T = 0:0.05:2pi+0.1
 POS_Z = sin.(T)
 VEL_Z = 5*cos.(T)
-plot(T, POS_Z, VEL_Z; xlabel="time [s]", ylabels=["pos_z [m]", "vel_z [m/s]"], labels=["pos_z [m]", "vel_z [m/s]"])
+plot(T, POS_Z, VEL_Z; xlabel="time [s]", ylabels=["pos_z [m]", "vel_z [m/s]"], 
+     labels=["pos_z", "vel_z"], fig="dual_y-axis")
 ```
+<p align="center"><img src="./docs/dual_y-axis.png" width="400" /></p>
 
 ### Advanced usage
 This library uses Matplotlib as backend, and you can change all settings of [rcParams](https://matplotlib.org/stable/users/explain/customizing.html#matplotlibrc-sample) as you wish. Example: Using an already installed LaTeX installation for high-quality rendering of LaTeX labels and other text:

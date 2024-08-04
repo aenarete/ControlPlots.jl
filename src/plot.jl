@@ -44,6 +44,9 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
         if fig != ""
             plt.figure(fig)
         end
+        if labels == ["", ""]
+            labels = ylabels
+        end
         for (i, Y) in pairs([Y1, Y2])
             
             if i==1
