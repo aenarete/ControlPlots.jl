@@ -35,6 +35,46 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
     PlotX(X, Ys, labels, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 4)
 end
 
+function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number}; 
+              xlabel="", ylabels=["", ""], labels=["", ""], 
+              xlims=nothing, ylims=nothing, ann=nothing, scatter=false,
+              fig="", ysize=14, disp=false)
+    local l1, l2
+    if disp
+        if fig != ""
+            plt.figure(fig)
+        end
+        for (i, Y) in pairs([Y1, Y2])
+            
+            if i==1
+                l1, = plt.plot(X, Y; label=labels[i], color="green")
+                if xlabel != ""
+                    plt.xlabel(xlabel, fontsize=14); 
+                end
+                if ylabels != ["", ""]
+                    plt.ylabel(ylabels[1], fontsize=ysize); 
+                end
+                plt.twinx()
+            else
+                l2, = plt.plot(X, Y; label=labels[i], color="red")
+                if ylabels[2] != ""
+                    plt.ylabel(ylabels[2], fontsize=ysize); 
+                end
+            end
+        end
+
+        plt.grid(true)
+        plt.grid(which="major", color="#DDDDDD")
+
+        lns = [l1, l2]
+        plt.legend(lns, labels, loc="best")
+        plt.tight_layout()
+    else
+        println("OK")
+    end
+    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, xlims, ylims, ann, scatter, fig, 5)
+end
+
 function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", ysize=14, disp=false)
     X = 1:length(Y)
     plot(X, Y; xlabel, ylabel, fig, disp, ysize)
