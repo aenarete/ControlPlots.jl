@@ -6,11 +6,12 @@ version = "0.1.2"
 [deps]
 JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
+StaticArraysCore = "1e83bf80-4336-4d27-bf5d-d5a4f845583c"
 
 [compat]
-julia = "1"
-PyPlot = "~2.11"
 JLD2 = "~0.4"
+PyPlot = "~2.11"
+julia = "1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

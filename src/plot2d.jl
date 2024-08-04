@@ -121,11 +121,23 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="",
     lines, sc, txt
 end
 
-plot2d = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
-    function(pos, reltime=0.0; kwargs...)
+plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
+    function(pos::Vector, reltime=0.0; kwargs...)
         if reltime == 0.0
             lines, sc, txt = nothing, nothing, nothing
         end
         lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, kwargs...)
     end
+end
+
+function plot2d(pos::SVector, reltime=0.0; kwargs...)
+    plot2d__(pos, reltime; kwargs...)
+end
+
+function plot2d(pos_matrix::Matrix, reltime; segments, zoom=false, xlim, ylim, xy)
+    pos_vectors = Vector{Float64}[]
+    for particle in 1:segments+1
+        push!(pos_vectors, pos_matrix[:, particle])
+    end
+    plot2d(pos_vectors, reltime; segments, zoom, xlim, ylim, xy)
 end

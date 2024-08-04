@@ -4,6 +4,7 @@ import PyPlot as plt
 import PyPlot.show as plshow
 import Base.display
 import JLD2
+using StaticArraysCore
 
 export plot, plotx, plotxy, plot2d, plt, load, save
 
