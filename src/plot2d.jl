@@ -83,13 +83,29 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="",
         if zoom
             txt.set_x(x_max)
             txt.set_y(z_max+dz_zoom)
-            plt.xlim(x_max-15.0, x_max+5)
-            plt.ylim(z_max-15.0, z_max+5)
+            if isnothing(xlim)
+                plt.xlim(x_max-15.0, x_max+5)
+            else
+                plt.xlim(xlim)
+            end
+            if isnothing(ylim)
+                plt.ylim(z_max-15.0, z_max+5)
+            else
+                plt.ylim(ylim)
+            end
         else
             txt.set_x(x_max+dx)
             txt.set_y(z_max+dz)
-            plt.xlim(0, x_max+5)
-            plt.ylim(0, z_max+5)
+            if isnothing(xlim)
+                plt.xlim(0, x_max+5)
+            else
+                plt.xlim(xlim)
+            end
+            if isnothing(ylim)
+                plt.ylim(0, z_max+5)
+            else
+                plt.ylim(ylim)
+            end
         end
     end
     plt.pause(0.01)
