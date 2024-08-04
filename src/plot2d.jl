@@ -130,7 +130,7 @@ plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be
     end
 end
 
-function plot2d(pos::SVector, reltime=0.0; kwargs...)
+function plot2d(pos::Union{Vector, SVector}, reltime=0.0; kwargs...)
     plot2d__(pos, reltime; kwargs...)
 end
 
