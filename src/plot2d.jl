@@ -99,8 +99,11 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="",
                 plt.ylim(ylim)
             end
         else
-            txt.set_x(x_max+dx)
-            txt.set_y(z_max+dz)
+            if isnothing(xy)
+                xy=(x_max+dx, z_max+dz)
+            end
+            txt.set_x(xy[1])
+            txt.set_y(xy[2])
             if isnothing(xlim)
                 plt.xlim(0, x_max+5)
             else
