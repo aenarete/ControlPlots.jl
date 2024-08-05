@@ -122,7 +122,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="",
 end
 
 plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
-    function(pos::Vector, reltime=0.0; kwargs...)
+    function(pos::AbstractVector, reltime=0.0; kwargs...)
         if reltime == 0.0
             lines, sc, txt = nothing, nothing, nothing
         end
