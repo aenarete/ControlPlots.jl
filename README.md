@@ -149,6 +149,26 @@ plot(T, POS_Z, VEL_Z; xlabel="time [s]",
 ```
 <p align="center"><img src="./docs/dual_y-axis.png" width="400" /></p>
 
+### 2D video
+A video-like display of a particle system (points, connected by lines) can be created with the 
+function `plot2d`. Example:
+```julia
+using ControlPlots
+
+t = 0
+x0 = 2.0
+z0 = 0.0
+for t in 0:0.1:5
+    global x0, z0
+    plot2d([[1,0,0], [x0,0,z0]], t; segments=1)
+    x0 += 0.1; z0 += 0.1
+    sleep(0.1)
+end
+``` 
+When the function is called at t=0 the line, dot and text objects are created. Each time afterwords these
+objects are just moved/ updated. Therefore, the update is very fast and you can achieve a high frame rate.
+With 10 points you can achieve a framerate of 20 Hz or more, depending on the speed of your hardware.
+
 ### Advanced usage
 This library uses Matplotlib as backend, and you can change all settings of [rcParams](https://matplotlib.org/stable/users/explain/customizing.html#matplotlibrc-sample) as you wish. Example: Using an already installed LaTeX installation for high-quality rendering of LaTeX labels and other text:
 
