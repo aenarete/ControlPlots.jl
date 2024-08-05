@@ -3,4 +3,5 @@
 # --> crash
 
 using ControlPlots
-plt=plot2d([[1,0,0], [2,0,0]], 10; segments=1)
+plot2d([[1,0,0], [2,0,0]], 0; segments=1)
+nothing
