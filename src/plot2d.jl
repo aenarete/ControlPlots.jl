@@ -1,5 +1,29 @@
-function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", 
-                 dz_zoom= 1.5, dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
+"""
+    plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, dz=-5.0, 
+            dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
+
+Display a video-like 2D particle system by calling `plot2d` in a loop.
+
+# Arguments
+- `pos`: a vector of 3D positions.
+- `reltime`: The relative time. When called the first time, set to `0.0`.
+- `zoom`: Whether to enable zooming (default: `true`).
+- `front`: Whether using a front view (default: `false`).
+- `segments`: The number of tether segments (default: `6`).
+- `fig`: The name of the figure to display (default: `""`).
+- `dz_zoom`: The z-axis offset in zoom view (default: `1.5`).
+- `dz`: The z-axis offset in normal view (default: `-5.0`).
+- `dx`: The x-axis offset (default: `-16.0`).
+- `xlim`: The x-axis limits (default: `nothing`).
+- `ylim`: The y-axis limits (default: `nothing`) (in reality the z-axis).
+- `xy`: The x-y coordinates of the text (default: `nothing`).
+- `lines`: The lines to plot.
+- `sc`: The dots (scatter plot).
+- `txt`: The text to display.
+
+"""
+function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom= 1.5, dz=-5.0, 
+                 dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
     x = Float64[] 
     z = Float64[]
     for i in eachindex(pos)
