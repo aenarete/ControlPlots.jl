@@ -1,3 +1,17 @@
+"""
+    plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="")
+
+Plot multiple curves given by `Ys` against a common x-axis `X`.
+
+# Arguments
+- `X`: The x-axis values.
+- `Ys`: A vector of vectors representing the y-axis values for each curve.
+
+# Optional Arguments
+- `xlabel`: The label for the x-axis. Default is an empty string.
+- `ylabel`: The label for the y-axis. Default is an empty string.
+
+"""
 function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
               labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
     if disp
