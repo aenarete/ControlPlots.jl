@@ -6,7 +6,7 @@ import Base.display
 import JLD2
 using StaticArraysCore
 
-export plot, plotx, plotxy, plot2d, plt, load, save
+export plot, plotx, plotxy, plot2d, plt, load, save, savefig
 
 mutable struct PlotX
     X
@@ -71,6 +71,10 @@ function display(P::PlotX)
     plt.pause(0.01)
     plt.show(block=false)
     nothing
+end
+
+function savefig(filename::String)
+    plt.savefig(filename)
 end
 
 end
