@@ -56,7 +56,7 @@ function display(P::PlotX)
         plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
              scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
     elseif P.type == 2
-        plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
+        plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, labels=P.labels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
               scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
     elseif P.type == 3
         plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 

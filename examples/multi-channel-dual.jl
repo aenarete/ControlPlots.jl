@@ -1,7 +1,7 @@
 using ControlPlots
 
 T = 0:0.1:2pi
-X1 = sin.(T)
-X2 = 0.2*sin.(2T)
+Y1 = sin.(T)
+Y2 = 0.2*sin.(2T)
 Y = cos.(T)
-plotx(T, [X1, X2], Y; ylabels=["sin","cos"], fig="multi-channel-dual")
+plotx(T, [Y1, Y2], Y; ylabels=["sin","cos"], labels=[["Y1","Y2"]], fig="multi-channel-dual")
