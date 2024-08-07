@@ -20,7 +20,14 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, xlims=nothing, ylims
             else
                 lbl=""
             end
-            plt.plot(X, y, label=lbl)
+            for yy in y
+                if isa(yy, Vector)
+                    plt.plot(X, yy, label=lbl)
+                else
+                    plt.plot(X, y, label=lbl)
+                    break
+                end
+            end
             plt.xlim(X[begin], X[end])
             plt.ylabel(lbl; fontsize=ysize);  
             plt.grid(true)
