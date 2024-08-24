@@ -1,8 +1,8 @@
 function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, fig="", title="", ysize=14, disp=false)
+               scatter=false, fig="", title="", ysize=14, yzoom=0.9, disp=false)
     if disp
         len=length(Y)
-        fig_ = plt.figure(fig, figsize=(8, len*2))
+        fig_ = plt.figure(fig, figsize=(8, len*2*yzoom))
         ax=[]
         for (i,y) in pairs(Y)
             subplot=100len+10+i
