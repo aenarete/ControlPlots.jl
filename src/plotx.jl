@@ -1,5 +1,5 @@
 function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, fig="", title="", ysize=14, yzoom=0.9, disp=false)
+               scatter=false, fig="", title="", ysize=14, yzoom=1.0, disp=false)
     if disp
         len=length(Y)
         fig_ = plt.figure(fig, figsize=(8, len*2*yzoom))
@@ -58,5 +58,5 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
         
         plt.tight_layout()
     end
-    PlotX(collect(X), Y, labels, xlabel, ylabels, ysize, xlims, ylims, ann, scatter, fig, 2)
+    PlotX(collect(X), Y, labels, xlabel, ylabels, ysize, yzoom, xlims, ylims, ann, scatter, fig, 2)
 end

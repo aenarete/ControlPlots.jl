@@ -46,7 +46,7 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
     else
         println("OK")
     end
-    PlotX(X, Ys, labels, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 4)
+    PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, fig, 4)
 end
 
 function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Number}; 
@@ -83,7 +83,7 @@ function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Numb
         else
             println("OK")
         end
-        PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, xlims, ylims, ann, scatter, fig, 5)
+        PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, fig, 5)
     end
     
 end
@@ -128,7 +128,7 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
     else
         println("OK")
     end
-    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, xlims, ylims, ann, scatter, fig, 5)
+    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, fig, 5)
 end
 
 function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", ysize=14, disp=false)
@@ -165,6 +165,6 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
         plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
-    PlotX(X, Y, nothing, xlabel, ylabel, ysize, xlims, ylims, ann, scatter, fig, 1)
+    PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, fig, 1)
 end
 
