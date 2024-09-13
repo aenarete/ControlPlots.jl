@@ -110,11 +110,17 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
                 if ylabels != ["", ""]
                     plt.ylabel(ylabels[1], fontsize=ysize); 
                 end
+                if ! isnothing(ylims)
+                    plt.ylim(ylims[1])
+                end
                 plt.twinx()
             else
                 l2, = plt.plot(X, Y; label=labels[i], color="red")
                 if ylabels[2] != ""
                     plt.ylabel(ylabels[2], fontsize=ysize); 
+                end
+                if ! isnothing(ylims)
+                    plt.ylim(ylims[2])
                 end
             end
         end
