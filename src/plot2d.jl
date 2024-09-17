@@ -35,6 +35,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zo
         push!(z, pos[i][3])
     end
     x_max = maximum(x)
+    x_min = minimum(x)
     z_max = maximum(z)
     xlabel = "x [m]"
     if front xlabel = "y [m]" end
@@ -113,7 +114,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zo
             txt.set_x(x_max)
             txt.set_y(z_max+dz_zoom)
             if isnothing(xlim)
-                plt.xlim(x_max-15.0, x_max+5)
+                plt.xlim(x_min-5.0, x_max+5)
             else
                 plt.xlim(xlim)
             end
