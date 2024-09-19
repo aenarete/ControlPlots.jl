@@ -28,9 +28,9 @@ function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
                     plt.plot(X, Y; label=labels[i])
                 end
             end
-        end
-        if scatter
-            plt.scatter(X, Y; s=24, c="red", alpha=1)
+            if scatter
+                plt.scatter(X, Y; s=24, c="red", alpha=1)
+            end
         end
         if xlabel != ""
             plt.xlabel(xlabel, fontsize=14); 
