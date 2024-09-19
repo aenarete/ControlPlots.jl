@@ -113,6 +113,9 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
                 if ! isnothing(ylims)
                     plt.ylim(ylims[1])
                 end
+                if scatter
+                    plt.scatter(X, Y; s=24, c="red", alpha=1)
+                end
                 plt.twinx()
             else
                 l2, = plt.plot(X, Y; label=labels[i], color="red")
@@ -121,6 +124,9 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
                 end
                 if ! isnothing(ylims)
                     plt.ylim(ylims[2])
+                end
+                if scatter
+                    plt.scatter(X, Y; s=24, c="red", alpha=1)
                 end
             end
         end
