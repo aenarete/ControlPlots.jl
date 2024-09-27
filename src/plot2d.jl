@@ -22,7 +22,7 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `txt`: The text to display.
 
 """
-function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom= 1.5, dz=-5.0, 
+function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsize=(6.4, 4.8), dz_zoom= 1.5, dz=-5.0, 
                  dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
     x = Float64[] 
     z = Float64[]
@@ -41,7 +41,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zo
     if front xlabel = "y [m]" end
     if isnothing(lines)
         if fig != ""
-            plt.figure(fig)
+            plt.figure(fig, figsize=figsize)
         end
         lines=[]
         line, = plt.plot(x,z; linewidth="1")
