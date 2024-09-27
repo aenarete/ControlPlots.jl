@@ -23,8 +23,8 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `txt`: The text to display.
 
 """
-function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsize=(6.4, 4.8), dz_zoom= 1.5, dz=-5.0, 
-                 dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
+function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsize=(6.4, 4.8), dz_zoom= 1.5, dpi=100,
+                 dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
     x = Float64[] 
     z = Float64[]
     for i in eachindex(pos)
@@ -42,7 +42,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
     if front xlabel = "y [m]" end
     if isnothing(lines)
         if fig != ""
-            plt.figure(fig, figsize)
+            plt.figure(fig, figsize, dpi)
         end
         lines=[]
         line, = plt.plot(x,z; linewidth="1")
@@ -148,11 +148,11 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
 end
 
 plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
-    function(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), kwargs...)
+    function(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dpi=100, kwargs...)
         if reltime == 0.0
             lines, sc, txt = nothing, nothing, nothing
         end
-        lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, fig, figsize, kwargs...)
+        lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, fig, figsize, dpi, kwargs...)
     end
 end
 
@@ -177,8 +177,8 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `xy`: The x-y coordinates of the text (default: `nothing`) (for side view the z-axis).
 
 """
-function plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), kwargs...)
-    plot2d__(pos, reltime; fig, figsize, kwargs...)
+function plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dpi=100, kwargs...)
+    plot2d__(pos, reltime; fig, figsize, dpi, kwargs...)
 end
 
 """
@@ -202,10 +202,10 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `xy`: The x-y coordinates of the text (default: `nothing`) (for side view the z-axis).
 
 """
-function plot2d(pos_matrix::Matrix, reltime; segments, zoom=false, xlim, ylim, xy, fig="", figsize=(6.4, 4.8))
+function plot2d(pos_matrix::Matrix, reltime; segments, zoom=false, xlim, ylim, xy, fig="", figsize=(6.4, 4.8), dpi=100)
     pos_vectors = Vector{Float64}[]
     for particle in 1:segments+1
         push!(pos_vectors, pos_matrix[:, particle])
     end
-    plot2d(pos_vectors, reltime; segments, zoom, xlim, ylim, xy, fig, figsize)
+    plot2d(pos_vectors, reltime; segments, zoom, xlim, ylim, xy, fig, figsize, dpi)
 end
