@@ -201,10 +201,10 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `xy`: The x-y coordinates of the text (default: `nothing`) (for side view the z-axis).
 
 """
-function plot2d(pos_matrix::Matrix, reltime; segments, zoom=false, xlim, ylim, xy)
+function plot2d(pos_matrix::Matrix, reltime; segments, zoom=false, xlim, ylim, xy, fig="", figsize=(6.4, 4.8))
     pos_vectors = Vector{Float64}[]
     for particle in 1:segments+1
         push!(pos_vectors, pos_matrix[:, particle])
     end
-    plot2d(pos_vectors, reltime; segments, zoom, xlim, ylim, xy)
+    plot2d(pos_vectors, reltime; segments, zoom, xlim, ylim, xy, fig="", figsize)
 end
