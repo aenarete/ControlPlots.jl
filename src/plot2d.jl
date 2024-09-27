@@ -142,6 +142,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
             end
         end
     end
+    plt.tight_layout()
     plt.pause(0.01)
     plt.show(block=false)
     lines, sc, txt
