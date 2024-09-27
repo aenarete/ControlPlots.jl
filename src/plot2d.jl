@@ -1,5 +1,5 @@
 """
-    plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, dz=-5.0, 
+    plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsize=(6.4, 4.8), dz_zoom=1.5, dz=-5.0, 
             dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
 
 Display a video-like 2D particle system by calling `plot2d` in a loop.
@@ -11,6 +11,7 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `front`: Whether using a front view (default: `false`).
 - `segments`: The number of tether segments (default: `6`).
 - `fig`: The name of the figure to display (default: `""`).
+- `figsize: The size of the figure in inch (default: `(6.4, 4.8)`).
 - `dz_zoom`: The z-axis offset in zoom view (default: `1.5`).
 - `dz`: The z-axis offset in normal view (default: `-5.0`).
 - `dx`: The x-axis offset (default: `-16.0`).
@@ -26,7 +27,6 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
                  dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
     x = Float64[] 
     z = Float64[]
-    println("4: fig: $fig", " figsize: $figsize")
     for i in eachindex(pos)
         if front
             push!(x, pos[i][2])
@@ -152,7 +152,6 @@ plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be
         if reltime == 0.0
             lines, sc, txt = nothing, nothing, nothing
         end
-        println("3: fig: $fig", " figsize: $figsize")
         lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, fig, figsize, kwargs...)
     end
 end
@@ -179,7 +178,6 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 
 """
 function plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), kwargs...)
-    println("2: fig: $fig", " figsize: $figsize")
     plot2d__(pos, reltime; fig, figsize, kwargs...)
 end
 
@@ -209,6 +207,5 @@ function plot2d(pos_matrix::Matrix, reltime; segments, zoom=false, xlim, ylim, x
     for particle in 1:segments+1
         push!(pos_vectors, pos_matrix[:, particle])
     end
-    println("1: fig: $fig", " figsize: $figsize")
     plot2d(pos_vectors, reltime; segments, zoom, xlim, ylim, xy, fig, figsize)
 end
