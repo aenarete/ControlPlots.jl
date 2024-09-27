@@ -9,7 +9,7 @@ PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
 StaticArraysCore = "1e83bf80-4336-4d27-bf5d-d5a4f845583c"
 
 [compat]
-JLD2 = "~0.5"
+JLD2 = "~0.3, ~0.4, ~0.5"
 PyPlot = "~2.11"
 StaticArraysCore = "1.4"
 julia = "1"
