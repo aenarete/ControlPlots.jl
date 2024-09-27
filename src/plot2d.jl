@@ -148,12 +148,12 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
 end
 
 plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
-    function(pos::AbstractVector, reltime=0.0; kwargs...)
+    function(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), kwargs...)
         if reltime == 0.0
             lines, sc, txt = nothing, nothing, nothing
         end
         println("3: fig: $fig", " figsize: $figsize")
-        lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, kwargs...)
+        lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, fig, figsize, kwargs...)
     end
 end
 
