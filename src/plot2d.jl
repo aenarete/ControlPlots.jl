@@ -178,9 +178,9 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `xy`: The x-y coordinates of the text (default: `nothing`) (for side view the z-axis).
 
 """
-function plot2d(pos::AbstractVector, reltime=0.0; kwargs...)
+function plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), kwargs...)
     println("2: fig: $fig", " figsize: $figsize")
-    plot2d__(pos, reltime; kwargs...)
+    plot2d__(pos, reltime; fig, figsize, kwargs...)
 end
 
 """
