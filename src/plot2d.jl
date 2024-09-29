@@ -110,7 +110,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
         end
         sc.set_offsets(hcat(x,z))
         # xy=(x_max, z_max+8.0)
-        txt.set_text("t=$(round(reltime,digits=1)) s")
+        txt.set_text("t=$(round(reltime, RoundDown; digits=1)) s")
         if zoom
             txt.set_x(x_max)
             txt.set_y(z_max+dz_zoom)
@@ -143,7 +143,7 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
         end
     end
     plt.tight_layout()
-    plt.pause(0.005)
+    plt.pause(0.01)
     plt.show(block=false)
     lines, sc, txt
 end
