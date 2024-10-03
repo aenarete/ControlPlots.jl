@@ -80,9 +80,6 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
                 plt.ylim(ylim)
             end
         end
-        if front
-            plt.gca().invert_xaxis()
-        end
         if length(pos) > segments+1
             s=segments
             line, = plt.plot([x[s+1],x[s+4]],[z[s+1],z[s+4]], linewidth="1"); push!(lines, line) # S6
@@ -145,10 +142,13 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
             end
         end
     end
+    if front
+        plt.gca().invert_xaxis()
+    end
     plt.tight_layout()
     plt.pause(0.01)
     plt.show(block=false)
-    lines, sc, txt
+    lines, sc, txt  
 end
 
 plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
