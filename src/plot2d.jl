@@ -80,6 +80,9 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
                 plt.ylim(ylim)
             end
         end
+        if Base.front
+            plt.gca().invert_xaxis()
+        end
         if length(pos) > segments+1
             s=segments
             line, = plt.plot([x[s+1],x[s+4]],[z[s+1],z[s+4]], linewidth="1"); push!(lines, line) # S6
