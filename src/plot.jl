@@ -12,24 +12,47 @@ Plot multiple curves given by `Ys` against a common x-axis `X`.
 - `ylabel`: The label for the y-axis. Default is an empty string.
 
 """
-function plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="",
-              labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
+function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", ylabel="",
+    labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
     if disp
         if fig != ""
             plt.figure(fig)
         end
-        for (i, Y) in pairs(Ys)
-            if isnothing(labels)
-                plt.plot(X, Y)
-            else
-                if isnothing(labels[i]) || labels[i]==""
-                    plt.plot(X, Y)
-                else
-                    plt.plot(X, Y; label=labels[i])
+        for (i, YT) in pairs(Ys)
+            if YT isa Tuple
+                Y, Yerr = YT
+                if isnothing(Yerr)
+                    YT = Y
                 end
             end
-            if scatter
-                plt.scatter(X, Y; s=24, c="red", alpha=1)
+            if YT isa Tuple
+                Y, Yerr = YT
+                if isnothing(labels)
+                    plt.errorbar(X, Y, yerr=Yerr, capsize=5)
+                else
+                    if isnothing(labels[i]) || labels[i]==""
+                        plt.errorbar(X, Y, yerr=Yerr, capsize=5)
+                    else
+                        plt.errorbar(X, Y, yerr=Yerr; label=labels[i], capsize=5)
+                    end
+                end
+                if scatter
+                    plt.scatter(X, Y; s=24, c="red", alpha=1)
+                end
+            else
+                Y = YT
+                if isnothing(labels)
+                    plt.plot(X, Y)
+                else
+                    if isnothing(labels[i]) || labels[i]==""
+                        plt.plot(X, Y)
+                    else
+                        plt.plot(X, Y; label=labels[i])
+                    end
+                end
+                if scatter
+                    plt.scatter(X, Y; s=24, c="red", alpha=1)
+                end
             end
         end
         if xlabel != ""
