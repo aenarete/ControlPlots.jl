@@ -116,6 +116,12 @@ Y2 = cos.(T)
 p = plotx(T, Y1, Y2; ylabels=["Y1", "Y2"], fig="dual")
 ```
 <p align="center"><img src="./docs/multi-channel.png" width="500" /></p>
+
+Full function signature:
+```julia
+plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
+               scatter=false, fig="", title="", ysize=14, yzoom=1.0, disp=false)
+```
 The optional parameter `ysize` can be used to change the size of the y-axis labels. The default value is 14 points.
 
 ### XY-Plot
