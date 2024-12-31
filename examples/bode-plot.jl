@@ -1,3 +1,7 @@
+using Pkg
+if ! ("ControlSystemsBase" ∈ keys(Pkg.project().dependencies))
+    using TestEnv; TestEnv.activate()
+end
 using ControlSystemsBase
 using ControlPlots
 
