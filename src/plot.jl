@@ -1,5 +1,6 @@
 """
-    plot(X, Ys::AbstractVector{<:AbstractVector}; xlabel="", ylabel="")
+    plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", ylabel="",
+    labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
 
 Plot multiple curves given by `Ys` against a common x-axis `X`.
 
