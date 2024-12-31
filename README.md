@@ -161,7 +161,7 @@ bode_plot(P; from=-2, to=2, title="Low pass filter")
 <p align="center"><img src="./docs/low_pass_filter.png" width="400" /></p>
 
 Full function signature:
-```
+```julia
 bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-3, to=1, fig=true, db=true, hz=true,
           db=true, hz=true, bw=false, linestyle="solid", show_title=true, fontsize=18)
 ```
