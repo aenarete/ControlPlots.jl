@@ -30,25 +30,25 @@ end
 todb(mag) = 20 * log10(mag)
 
 """
-    bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-3, to=1, fig=true, db=true, hz=true, Γ0=nothing,
-                                                        bw=false, linestyle="solid", title_=true, fontsize=18)
+    bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-3, to=1, fig=true, db=true, hz=true,
+                                     db=true, hz=true, bw=false, linestyle="solid", show_title=true, fontsize=18)
 
 Create a bode plot of a linear system. Parameters:
-- title (String)
-- from  (min frequency in rad/s, default -3, means 1e-3)
-- to    (max frequency in rad/s, default  1, means 1e1)
-- fig   (default true, create a new figure)
-- db    (default true, use dezibel as unit for the magnitude)
-- hz    (default true, use Hz as unit for the frequency)
-- bw    (default false, if true, the bode plot is in black and white)
-- linestyle (default "solid", line style for the bode plot)
-- title_ (default true, show title)
-- fontsize (default 18, font size for the labels)
+- title      (String)
+- from       (min frequency in rad/s, default -3, means 1e-3)
+- to         (max frequency in rad/s, default  1, means 1e1)
+- fig        (default true, create a new figure)
+- db         (default true, use decibel as unit for the magnitude)
+- hz         (default true, use Hz as unit for the frequency)
+- bw         (default false, if true, the bode plot is in black and white)
+- linestyle  (default "solid", line style for the bode plot)
+- show_title (default true, show title)
+- fontsize   (default 18, font size for the labels)
 
 Returns: nothing
 """
 function bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-1, to=1, fig=true, 
-                   db=true, hz=true, bw=false, linestyle="solid", title_=true, fontsize=18)
+                   db=true, hz=true, bw=false, linestyle="solid", show_title=true, fontsize=18)
     lbl=""
     if fig; plt.figure(title, figsize=(8, 6)); end
     ax1 = plt.subplot(211) 
@@ -76,7 +76,7 @@ function bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-1, 
         plt.xlabel("Frequency [rad/s]", fontsize = fontsize)
     end
     plt.grid(true, which="both", ls="-.")
-    if title_
+    if show_title
         plt.title(title, fontsize = fontsize)
     end
     ax2 = plt.subplot(212, sharex=ax1) 
