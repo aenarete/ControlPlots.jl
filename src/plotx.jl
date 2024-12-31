@@ -18,7 +18,7 @@ Create an oscilloscope like plot with multiple y axes and one x axis.
 - `title::String`: title
 - `ysize::Int`: y-axis label size
 - `yzoom::Float64`: y-axis zoom factor
-- `disp::Bool`: display plot or just regurn the PlotX struct
+- `disp::Bool`: display plot or just return the PlotX struct
 """
 function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
                scatter=false, fig="", title="", ysize=14, yzoom=1.0, disp=false)
