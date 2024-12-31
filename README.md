@@ -149,6 +149,17 @@ plot(T, POS_Z, VEL_Z; xlabel="time [s]",
 ```
 <p align="center"><img src="./docs/dual_y-axis.png" width="400" /></p>
 
+### Bode plot
+```julia
+using ControlSystemsBase
+using ControlPlots
+
+P = tf([1.], [1., 1])
+
+bode_plot(P; from=-2, to=2, title="Low pass filter")
+```
+<p align="center"><img src="./docs/low_pass_filter.png" width="400" /></p>
+
 ### 2D video
 A video-like display of a particle system (points, connected by lines) can be created with the 
 function `plot2d`. Example:
