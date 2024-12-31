@@ -10,7 +10,7 @@ This package provides the following features:
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 - an XY plot can be created with the `plotxy()` function
-- bode plots
+- bode plots using the `bode_plot()` function
 - pan and zoom are supported
 - LaTeX can be used for the labels
 - the parameters of the plot commands are stored in a struct and returned
@@ -159,6 +159,13 @@ P = tf([1.], [1., 1])
 bode_plot(P; from=-2, to=2, title="Low pass filter")
 ```
 <p align="center"><img src="./docs/low_pass_filter.png" width="400" /></p>
+
+Full function signature:
+```
+bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-3, to=1, fig=true, db=true, hz=true,
+          db=true, hz=true, bw=false, linestyle="solid", show_title=true, fontsize=18)
+```
+For using this function you need to do `using ControlSystemsBase` first, because this is a package extension.
 
 ### 2D video
 A video-like display of a particle system (points, connected by lines) can be created with the 
