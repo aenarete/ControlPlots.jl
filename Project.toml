@@ -17,10 +17,11 @@ ControlSystemsBase = "aaaaaaaa-a6ca-5380-bf3e-84a91bcd477e"
 ControlPlotsExt = "ControlSystemsBase"
 
 [compat]
+ControlSystemsBase = "1"
 JLD2 = "~0.3, ~0.4, ~0.5"
+LaTeXStrings = "1"
 PyPlot = "~2.11"
 StaticArraysCore = "1.4"
-LaTeXStrings = "1"
 julia = "1"
 
 [extras]
