@@ -1,34 +1,30 @@
 using ControlPlots
 
 # Initial position parameters
-x0 = 0.0   # horizontal position
+x0 = -1.0   # horizontal position
 y0 = 0.0   # height from ground
 ω = 2π     # angular frequency for jumping motion
 
-# Define square head points relative to center
-function make_head_points(center_x, center_z, size=0.3)
-    [
-        [center_x - size, 0, center_z + size],  # Top left
-        [center_x + size, 0, center_z + size],  # Top right
-        [center_x, 0, center_z],  # Bottom
-    ]
-end
-
-for t in 0:0.05:5
+for t in 0:0.05:7
     # Create jumping motion
     height = 2.0 + 0.3 * sin(ω * t)
     x = x0 + t     # Move right over time
     
     # Get head points
-    head_points = make_head_points(x, height + 0.4)
+    size = 0.5
+    head_points = [
+        [x - 0.3, 0, height+0.4 + size],  # Top left
+        [x + 0.3, 0, height+0.4 + size],  # Top right
+        [x, 0, height+0.4],  # Bottom
+    ]
     
     # Define points for stick figure
     neck = [x, 0, height + 0.4]        # Neck
     body = [x, 0, height]              # Body center
     lhand = [x - 0.3, 0, height + 0.2 * sin(ω * t)]  # Left hand
     rhand = [x + 0.3, 0, height + 0.2 * sin(ω * t)]  # Right hand
-    lfoot = [x - 0.3, 0, height - 0.8 - 0.2 * cos(ω * t)]  # Left foot
-    rfoot = [x + 0.3, 0, height - 0.8 + 0.2 * cos(ω * t)]  # Right foot
+    lfoot = [x - 0.3, 0, height - 1.6 - 0.2 * cos(ω * t)]  # Left foot
+    rfoot = [x + 0.3, 0, height - 1.6 + 0.2 * cos(ω * t)]  # Right foot
 
     # Combine all points (head points first, then body parts)
     points = [head_points..., neck, body, lhand, rhand, lfoot, rfoot]
@@ -47,6 +43,6 @@ for t in 0:0.05:5
     ]
     
     # Plot the stick figure
-    plot2d(points, segments, t; zoom=false, xlim=(-1, 8), ylim=(0, 5))
+    plot2d(points, segments, t; zoom=false, xlim=(0, 5), ylim=(0, 5))
     sleep(0.05)
 end
