@@ -215,7 +215,7 @@ function plot2d(pos_matrix::AbstractMatrix, reltime; segments=6, kwargs...)
 end
 
 
-function plot2d_with_segments_(pos, seg, reltime; zoom=true, front=false, fig="", figsize=(6.4, 4.8), dz_zoom= 1.5, dpi=100,
+function plot2d_with_segments_(pos, seg, reltime; zoom=true, front=false, fig="", figsize=(6.4, 4.8), dz_zoom=1.5, dpi=100,
                  dz=1.0, dx=1.0, xlim=nothing, ylim=nothing, xy=nothing, lines=nothing, sc=nothing, txt=nothing)
     x = Float64[] 
     z = Float64[]
@@ -296,12 +296,12 @@ function plot2d_with_segments_(pos, seg, reltime; zoom=true, front=false, fig=""
             txt.set_x(x_max)
             txt.set_y(z_max+dz_zoom)
             if isnothing(xlim)
-                plt.xlim(x_min-5.0, x_max+5)
+                plt.xlim(x_min-5, x_max+5)
             else
                 plt.xlim(xlim)
             end
             if isnothing(ylim)
-                plt.ylim(z_max-15.0, z_max+5)
+                plt.ylim(z_max-5, z_max+5)
             else
                 plt.ylim(ylim)
             end
