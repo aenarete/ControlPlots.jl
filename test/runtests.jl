@@ -49,6 +49,7 @@ using Test
 
     @testset "Plot2d" begin
         # Test standard plot2d
+        plt.figure("Plot2d")
         pos = [[0.0, 0.0, 0.0], [1.0, 0.0, 1.0]]
         lines, sc, txt = plot2d(pos, 0.0; segments=1)
         plt.show(block=false)
@@ -60,6 +61,7 @@ using Test
     end
 
     @testset "Plot2D with segments" begin
+        plt.figure("Plot2D_with_segments")
         # Test plot2d with segments
         points = [
             [0.0, 0.0, 2.0],  # top
