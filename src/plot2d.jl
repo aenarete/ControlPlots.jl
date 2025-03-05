@@ -216,7 +216,7 @@ end
 
 
 function plot2d_with_segments_(pos, seg, reltime; zoom=true, front=false, fig="", figsize=(6.4, 4.8), dz_zoom= 1.5, dpi=100,
-                 dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines=nothing, sc=nothing, txt=nothing)
+                 dz=1.0, dx=1.0, xlim=nothing, ylim=nothing, xy=nothing, lines=nothing, sc=nothing, txt=nothing)
     x = Float64[] 
     z = Float64[]
     for i in eachindex(pos)
@@ -309,18 +309,16 @@ function plot2d_with_segments_(pos, seg, reltime; zoom=true, front=false, fig=""
             if isnothing(xy)
                 xy=(x_max+dx, z_max+dz)
             end
-            txt.set_x(xy[1])
-            txt.set_y(xy[2])
             if isnothing(xlim)
-                plt.xlim(0, x_max+5)
-            else
-                plt.xlim(xlim)
+                xlim = (0, x_max + 5)
             end
             if isnothing(ylim)
-                plt.ylim(0, z_max+5)
-            else
-                plt.ylim(ylim)
+                ylim = (0, z_max + 5)
             end
+            txt.set_x(max(min(xy[1], xlim[2]-1), xlim[1]+1))
+            txt.set_y(max(min(xy[2], ylim[2]-1), ylim[1]+1))
+            plt.xlim(xlim)
+            plt.ylim(ylim)
         end
     end
     if front
