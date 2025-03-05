@@ -199,6 +199,33 @@ When the function is called at t=0 the line, dot and text objects are created. E
 objects are just moved/ updated. Therefore, the update is very fast and you can achieve a high frame rate.
 With 10 points you can achieve a framerate of 20 Hz or more, depending on the speed of your hardware.
 
+## 2D video with custom segments
+You can create 2D animations with custom line segments between points. Example:
+```julia
+using ControlPlots
+
+for t in 0:0.05:5
+    # Define points for triangle
+    points = [
+        [t, 0, 2.0],           # top
+        [t-0.5, 0, 1.0],       # bottom left
+        [t+0.5, 0, 1.0]        # bottom right
+    ]
+    
+    # Define segments to connect points
+    segments = [
+        [1, 2],  # top to bottom left
+        [2, 3],  # bottom left to right
+        [3, 1]   # bottom right to top
+    ]
+    
+    # Plot the triangle
+    plot2d(points, segments, t; zoom=false, xlim=(0, 5), ylim=(0, 3))
+    sleep(0.05)
+end
+```
+This creates a moving triangle animation. The `segments` parameter defines which points should be connected by lines, making it easy to create shapes and animations. Each segment is defined by a pair of indices referring to points in the `points` array.
+
 ### Advanced usage
 This library uses Matplotlib as backend, and you can change all settings of [rcParams](https://matplotlib.org/stable/users/explain/customizing.html#matplotlibrc-sample) as you wish. Example: Using an already installed LaTeX installation for high-quality rendering of LaTeX labels and other text:
 
