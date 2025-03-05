@@ -46,4 +46,37 @@ using Test
     @test p.xlabel == "time [s]"
     @test p.ylabels == ["pos_z [m]", "vel_z [m/s]"]
     @test p.labels == ["pos_z", "vel_z"]
+
+    @testset "Plot2d" begin
+        # Test standard plot2d
+        pos = [[0.0, 0.0, 0.0], [1.0, 0.0, 1.0]]
+        lines, sc, txt = plot2d(pos, 0.0; segments=1)
+        plt.show(block=false)
+        sleep(1)
+        @test !isnothing(lines)
+        @test length(lines) ≥ 1  # Should have at least one line
+        @test !isnothing(sc)     # Should have scatter points
+        @test !isnothing(txt)    # Should have time text
+    end
+
+    @testset "Plot2D with segments" begin
+        # Test plot2d with segments
+        points = [
+            [0.0, 0.0, 2.0],  # top
+            [-0.5, 0.0, 1.0], # bottom left
+            [0.5, 0.0, 1.0]   # bottom right
+        ]
+        segments = [
+            [1, 2],  # top to bottom left
+            [2, 3],  # bottom left to right
+            [3, 1]   # bottom right to top
+        ]
+        lines, sc, txt = plot2d(points, segments, 0.0)
+        plt.show(block=false)
+        sleep(1)
+        @test !isnothing(lines)
+        @test length(lines) == length(segments)  # Should have one line per segment
+        @test !isnothing(sc)     # Should have scatter points
+        @test !isnothing(txt)    # Should have time text
+    end
 end
