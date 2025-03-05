@@ -186,7 +186,7 @@ function plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dp
 end
 
 """
-    plot2d(pos_matix::Matrix, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, 
+    plot2d(pos_matix::AbstractMatrix, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, 
            dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing)
 
 Display a video-like 2D particle system by calling `plot2d` in a loop.
