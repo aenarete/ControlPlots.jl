@@ -22,6 +22,7 @@ mutable struct PlotX
     ylims
     ann
     scatter
+    title
     fig
     type::Int64
 end
