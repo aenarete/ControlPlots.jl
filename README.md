@@ -10,6 +10,7 @@ This package provides the following features:
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 - an XY plot can be created with the `plotxy()` function
+- the `plot2d` function can create fast animations of particle systems, connected with segments
 - bode plots using the `bode_plot()` function
 - pan and zoom are supported
 - LaTeX can be used for the labels
