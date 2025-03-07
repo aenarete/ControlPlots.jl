@@ -186,7 +186,7 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
     else
         println("OK")
     end
-    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, fig, 5)
+    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, title, fig, 5)
 end
 
 function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", title="", fig="", ysize=14, disp=false)
