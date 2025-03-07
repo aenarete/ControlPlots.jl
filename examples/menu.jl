@@ -18,6 +18,7 @@ options = ["basic = include(\"basic.jl\")",
            "multi_channel_ysize = include(\"multi-channel_ysize.jl\")",
            "multi_channel_dual = include(\"multi-channel-dual.jl\")",
            "multi_channel_many = include(\"multi-channel-many.jl\")",
+           "multi_channel = include(\"multi-channel.jl\")",
            "quit"]
 
 function example_menu()
