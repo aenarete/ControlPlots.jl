@@ -13,6 +13,7 @@ options = ["basic = include(\"basic.jl\")",
            "dual_y_axis_3 = include(\"dual_y-axis-3.jl\")",
            "LaTeX = include(\"latex.jl\")",
            "multi_channel_shifted = include(\"multi-channel_shifted.jl\")",
+           "multi_channel_ysize = include(\"multi-channel_ysize.jl\")",
            "quit"]
 
 function example_menu()
