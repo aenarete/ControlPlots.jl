@@ -33,7 +33,6 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
         if title != ""
             plt.title(title)
         end
-        plot("title l36: ", title)
         for (i, YT) in pairs(Ys)
             if YT isa Tuple
                 Y, Yerr = YT
@@ -87,7 +86,7 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
     else
         println("OK")
     end
-    PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, fig, 4)
+    PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, title, fig, 4)
 end
 
 function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Number}; 
