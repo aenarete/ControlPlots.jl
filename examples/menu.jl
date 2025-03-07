@@ -21,6 +21,7 @@ options = ["basic = include(\"basic.jl\")",
            "multi_channel = include(\"multi-channel.jl\")",
            "plot2d_seg = include(\"plot2d-seg.jl\")",
            "plot_2d = include(\"plot2d.jl\")",
+           "plot_xy = include(\"plotxy.jl\")",
            "quit"]
 
 function example_menu()
