@@ -14,6 +14,7 @@ options = ["basic = include(\"basic.jl\")",
            "LaTeX = include(\"latex.jl\")",
            "multi_channel_shifted = include(\"multi-channel_shifted.jl\")",
            "multi_channel_ysize = include(\"multi-channel_ysize.jl\")",
+           "multi_channel_dual = include(\"multi-channel-dual.jl\")",
            "quit"]
 
 function example_menu()
