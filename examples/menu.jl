@@ -6,6 +6,8 @@ using ControlSystemsBase
 using ControlPlots
 using REPL.TerminalMenus
 
+p = nothing
+
 options = ["basic = include(\"basic.jl\")",
            "Bode_plot = include(\"bode-plot.jl\")",
            "dual_one_axis_error_bars = include(\"dual_one_axis_error_bars.jl\")",
@@ -18,6 +20,7 @@ options = ["basic = include(\"basic.jl\")",
            "quit"]
 
 function example_menu()
+    global p
     active = true
     while active
         menu = RadioMenu(options, pagesize=8)
@@ -25,7 +28,10 @@ function example_menu()
 
         if choice != -1 && choice != length(options)
             eval(Meta.parse(options[choice]))
-            # display(p)
+            if !isnothing(p)
+                display(p)
+                p=nothing
+            end
         else
             println("Left menu. Press <ctrl><d> to quit Julia!")
             active = false
