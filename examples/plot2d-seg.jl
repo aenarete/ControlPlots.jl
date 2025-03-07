@@ -1,11 +1,14 @@
 using ControlPlots
 
 # Initial position parameters
-x0 = -1.0   # horizontal position
-y0 = 0.0   # height from ground
-ω = 2π     # angular frequency for jumping motion
+x0 = -1.0    # horizontal position
+y0 = 0.0     # height from ground
+ω = 2π       # angular frequency for jumping motion
+SAVE = false # save each frame in the video folder
 
+j = 0
 for t in 0:0.05:7
+    global j
     # Create jumping motion
     height = 2.0 + 0.3 * sin(ω * t)
     x = x0 + t     # Move right over time
@@ -44,5 +47,9 @@ for t in 0:0.05:7
     
     # Plot the stick figure
     plot2d(points, segments, t; zoom=false, xlim=(0, 5), ylim=(0, 5))
+    if SAVE
+        ControlPlots.plt.savefig("video/"*"img-"*lpad(j, 4, "0"))
+    end
+    j += 1
     sleep(0.05)
 end
