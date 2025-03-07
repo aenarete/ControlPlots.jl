@@ -12,6 +12,7 @@ options = ["basic = include(\"basic.jl\")",
            "dual_one_axis = include(\"dual_one_axis.jl\")",
            "dual_y_axis_3 = include(\"dual_y-axis-3.jl\")",
            "LaTeX = include(\"latex.jl\")",
+           "multi_channel_shifted = include(\"multi-channel_shifted.jl\")",
            "quit"]
 
 function example_menu()

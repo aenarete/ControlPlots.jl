@@ -3,4 +3,5 @@ using ControlPlots
 T = 2pi:0.1:4pi
 X = sin.(T)
 Y = cos.(T)
-plotx(T, X, Y; ylabels=["sin","cos"], fig="2-chan")
+p=plotx(T, X, Y; ylabels=["sin","cos"], fig="2-chan", title="Dual channel plot, shifted x-axis")
+display(p)
