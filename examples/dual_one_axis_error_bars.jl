@@ -10,5 +10,5 @@ VEL_Z = 5*cos.(T)
 ERR_POS = 0.2 .+ 0.1*abs.(randn(length(T)))
 ERR_VEL = 0.2 .+ 0.1*abs.(randn(length(T)))
 p = plot(T, [(POS_Z, ERR_POS), (VEL_Z, nothing)]; 
-         xlabel="time [s]", ylabel="pos [m]", labels=["pos_x", "vel_y"])
+         xlabel="time [s]", ylabel="pos [m]", labels=["pos_x", "vel_y"], title="Dual plot with error bars")
 display(p)
