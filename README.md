@@ -21,7 +21,6 @@ This package provides the following features:
 
 ## TODO
 - add support for PythonPlot
-- allow changing of the caption
 - the `save()` function should allow storing a plot as jld2, pdf or png file
 </details>
 
@@ -69,7 +68,6 @@ pkg"add ControlPlots"
 </details>
 
 ## Usage
-
 ### Basic example
 Launch Julia with `julia --project`. Then execute:
 ```julia
@@ -105,6 +103,23 @@ Full function signature:
 plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", ylabel="", labels=nothing,
      xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
 ```
+
+### Running the examples
+Create a project folder and start Julia:
+```bash
+mkdir examples
+cd examples
+julia --project=.
+```
+Add the package, and install and run the examples:
+```julia
+using Pkg
+pkg"add ControlPlots"
+using ControlPlots
+ControlPlots.install_examples()
+include("examples/menu.jl")
+```
+You should now see a menu with all the examples. Select one by using the \<UP\> and \<DOWN\> keys and press \<ENTER\> to run the example.
 
 ### Multi-channel plot
 ```julia
