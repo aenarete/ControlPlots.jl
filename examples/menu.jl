@@ -10,7 +10,7 @@ options = ["basic = include(\"basic.jl\")",
            "Bode_plot = include(\"bode-plot.jl\")",
            "dual_one_axis_error_bars = include(\"dual_one_axis_error_bars.jl\")",
            "dual_one_axis = include(\"dual_one_axis.jl\")",
-           "dual_y-axis-3 = include(\"dual_y-axis-3.jl\")",
+           "dual_y_axis_3 = include(\"dual_y-axis-3.jl\")",
            "quit"]
 
 function example_menu()
