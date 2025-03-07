@@ -22,6 +22,8 @@ options = ["basic = include(\"basic.jl\")",
            "plot2d_seg = include(\"plot2d-seg.jl\")",
            "plot_2d = include(\"plot2d.jl\")",
            "plot_xy = include(\"plotxy.jl\")",
+           "shifted = include(\"shifted.jl\")",
+           "simple = include(\"simple.jl\")",
            "quit"]
 
 function example_menu()
