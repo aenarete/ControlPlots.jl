@@ -78,7 +78,6 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
             plt.ylabel(ylabel, fontsize=ysize); 
         end
         if ! isnothing(xlims)
-            println("xlims: $xlims")
             plt.xlim(xlims)
         end
         plt.grid(true)
@@ -95,7 +94,6 @@ function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Numb
     xlabel="", ylabels=["", ""], labels=["", ""], 
     xlims=nothing, ylims=nothing, ann=nothing, scatter=false,
     title="", fig="", ysize=14, disp=false)
-    println("title l98: ", title)
     if length(Y1) == 1
         plot(X, Y1[1], Y2; xlabel=xlabel, ylabels, labels, xlims, ylims, ann, scatter, title, fig, ysize, disp)
     else
@@ -146,7 +144,6 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
         if title != ""
             plt.title(title)
         end
-        println("title l149: ", title)
         if labels == ["", ""]
             labels = ylabels
         end
@@ -207,7 +204,6 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
         if title != ""
             plt.title(title)
         end
-        println("title l210: ", title, ", disp: ", disp)
         plt.plot(X, Y; label=ylabel)
         if xlabel != ""
             plt.xlabel(xlabel, fontsize=14); 
