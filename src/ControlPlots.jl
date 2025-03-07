@@ -58,19 +58,19 @@ end
 function display(P::PlotX)
     if P.type == 1
         plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
-             scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
+             scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, disp=true)
     elseif P.type == 2
         plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, labels=P.labels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
-              scatter=P.scatter, fig=P.fig, ysize=P.ysize, yzoom=P.yzoom, disp=true)
+              scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, yzoom=P.yzoom, disp=true)
     elseif P.type == 3
         plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
                scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
     elseif P.type == 4
         plot(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, labels=P.labels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
-             scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
+             scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, disp=true)
     elseif P.type == 5
         plot(P.X, P.Y[1], P.Y[2]; xlabel=P.xlabel, ylabels=P.ylabels, labels=P.labels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
-             scatter=P.scatter, fig=P.fig, ysize=P.ysize, disp=true)
+             scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, disp=true)
     end
     plt.pause(0.01)
     plt.show(block=false)

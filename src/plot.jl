@@ -33,6 +33,7 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
         if title != ""
             plt.title(title)
         end
+        plot("title l36: ", title)
         for (i, YT) in pairs(Ys)
             if YT isa Tuple
                 Y, Yerr = YT
@@ -94,8 +95,9 @@ function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Numb
     xlabel="", ylabels=["", ""], labels=["", ""], 
     xlims=nothing, ylims=nothing, ann=nothing, scatter=false,
     title="", fig="", ysize=14, disp=false)
+    println("title l98: ", title)
     if length(Y1) == 1
-        plot(X, Y1[1], Y2; xlabel=xlabel, ylabels, labels, xlims, ylims, ann, scatter, fig, ysize, disp)
+        plot(X, Y1[1], Y2; xlabel=xlabel, ylabels, labels, xlims, ylims, ann, scatter, title, fig, ysize, disp)
     else
         if disp
             if fig != ""
@@ -144,6 +146,7 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
         if title != ""
             plt.title(title)
         end
+        println("title l149: ", title)
         if labels == ["", ""]
             labels = ylabels
         end
@@ -204,6 +207,7 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
         if title != ""
             plt.title(title)
         end
+        println("title l210: ", title, ", disp: ", disp)
         plt.plot(X, Y; label=ylabel)
         if xlabel != ""
             plt.xlabel(xlabel, fontsize=14); 
