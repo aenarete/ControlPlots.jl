@@ -53,3 +53,7 @@ for t in 0:0.05:7
     j += 1
     sleep(0.05)
 end
+# create .gif file:
+# cd video
+# rm img-000*
+# convert -delay 0 -loop 0 *.png animation.gif
