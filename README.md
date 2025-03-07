@@ -101,7 +101,7 @@ The plot is automatically displayed.
 Full function signature:
 ```julia
 plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", ylabel="", labels=nothing,
-     xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
+     xlims=nothing, ylims=nothing, ann=nothing, scatter=false, title="", fig="", ysize=14, disp=false)
 ```
 
 ### Running the examples
