@@ -11,6 +11,7 @@ options = ["basic = include(\"basic.jl\")",
            "dual_one_axis_error_bars = include(\"dual_one_axis_error_bars.jl\")",
            "dual_one_axis = include(\"dual_one_axis.jl\")",
            "dual_y_axis_3 = include(\"dual_y-axis-3.jl\")",
+           "LaTeX = include(\"latex.jl\")",
            "quit"]
 
 function example_menu()
