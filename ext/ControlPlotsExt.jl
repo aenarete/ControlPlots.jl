@@ -100,7 +100,8 @@ function bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-1, 
     else
         plt.subplots_adjust(top=0.94)
     end
-    # plt.plshow(block=false)
+    plt.pause(0.01)
+    plt.show(block=false)
     nothing
 end
 
