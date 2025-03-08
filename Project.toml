@@ -18,16 +18,20 @@ ControlSystemsBase = "aaaaaaaa-a6ca-5380-bf3e-84a91bcd477e"
 ControlPlotsExt = "ControlSystemsBase"
 
 [compat]
+Aqua = "0.8"
 ControlSystemsBase = "1"
 JLD2 = "~0.3, ~0.4, ~0.5"
 LaTeXStrings = "1"
 Pkg = "1"
+Printf = "1"
 PyPlot = "~2.11"
 StaticArraysCore = "1.4"
+Test = "1"
 julia = "1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
 
 [targets]
-test = ["Test", "ControlSystemsBase"]
+test = ["Test", "Aqua", "ControlSystemsBase"]
