@@ -5,6 +5,7 @@ import PyPlot.show as plshow
 import Base.display
 import JLD2
 using StaticArraysCore
+using Pkg
 
 export plot, plotx, plotxy, plot2d, plt, load, save, savefig, bode_plot
 
