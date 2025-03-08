@@ -106,6 +106,9 @@ function install_examples(add_packages=true)
         if ! ("LaTeXStrings" ∈ keys(Pkg.project().dependencies))
             Pkg.add("LaTeXStrings")
         end
+        if ! ("ControlSystemsBase" ∈ keys(Pkg.project().dependencies))
+            Pkg.add("ControlSystemsBase")
+        end
     end
 end
 
