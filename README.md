@@ -208,7 +208,7 @@ bode_plot(P; from=-2, to=2, title="Low pass filter")
 
 Full function signature:
 ```julia
-bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-3, to=1, fig=true, db=true, hz=true,
+bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-3, to=1, fig=true, 
           db=true, hz=true, bw=false, linestyle="solid", show_title=true, fontsize=18)
 ```
 For using this function you need to do `using ControlSystemsBase` first, because this is a package extension.
