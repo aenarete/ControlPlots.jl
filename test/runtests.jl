@@ -82,3 +82,4 @@ using Test
         @test !isnothing(txt)    # Should have time text
     end
 end
+include("aqua.jl")
