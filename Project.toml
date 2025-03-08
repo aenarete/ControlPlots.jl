@@ -23,8 +23,10 @@ ControlSystemsBase = "1"
 JLD2 = "~0.3, ~0.4, ~0.5"
 LaTeXStrings = "1"
 Pkg = "1"
+Printf = "1"
 PyPlot = "~2.11"
 StaticArraysCore = "1.4"
+Test = "1"
 julia = "1"
 
 [extras]
