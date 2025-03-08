@@ -141,7 +141,8 @@ plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing
 The optional parameter `ysize` can be used to change the size of the y-axis labels. The default value is 14 points.
 
 ### **n x m** Plot
-You can put more than one time series in on of the vertically aligned plots, showed before. This is for example useful for combining set value and actual value of a signal in one plot.
+You can put more than one time series in one or more of the vertically aligned plots, showed before.
+This is for example useful for combining set value and actual value of a signal in one plot.
 
 ```julia
 using ControlPlots
