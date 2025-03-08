@@ -2,3 +2,5 @@
 .vscode/settings.json
 plot.jld2
 .vscode/launch.json
+video/*.png
+video/animation.gif

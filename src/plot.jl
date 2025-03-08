@@ -1,6 +1,7 @@
 """
     plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", ylabel="",
-    labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
+    labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, 
+    title="", fig="", ysize=14, disp=false)
 
 Plot multiple curves given by `Ys` against a common x-axis `X`.
 
@@ -16,16 +17,21 @@ Plot multiple curves given by `Ys` against a common x-axis `X`.
 - `ylims`: The limits for the y-axis. Default is `nothing`.
 - `ann`: An annotation to be placed on the plot. Default is `nothing`.
 - `scatter`: A boolean indicating whether to plot the points as a scatter plot. Default is `false`.
+- `title`: The title of the figure. Default is an empty string.
 - `fig`: The name of the figure. Default is an empty string.
 - `ysize`: The font size for the y-axis label. Default is 14.
 - `disp`: A boolean indicating whether to display the plot. If false, only create a structure to be displayed later. 
           Default is `false`.
 """
 function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", ylabel="",
-    labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
+    labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, scatter=false, 
+    title="", fig="", ysize=14, disp=false)
     if disp
         if fig != ""
             plt.figure(fig)
+        end
+        if title != ""
+            plt.title(title)
         end
         for (i, YT) in pairs(Ys)
             if YT isa Tuple
@@ -71,7 +77,6 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
             plt.ylabel(ylabel, fontsize=ysize); 
         end
         if ! isnothing(xlims)
-            println("xlims: $xlims")
             plt.xlim(xlims)
         end
         plt.grid(true)
@@ -81,19 +86,22 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
     else
         println("OK")
     end
-    PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, fig, 4)
+    PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, title, fig, 4)
 end
 
 function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Number}; 
     xlabel="", ylabels=["", ""], labels=["", ""], 
     xlims=nothing, ylims=nothing, ann=nothing, scatter=false,
-    fig="", ysize=14, disp=false)
+    title="", fig="", ysize=14, disp=false)
     if length(Y1) == 1
-        plot(X, Y1[1], Y2; xlabel=xlabel, ylabels, labels, xlims, ylims, ann, scatter, fig, ysize, disp)
+        plot(X, Y1[1], Y2; xlabel=xlabel, ylabels, labels, xlims, ylims, ann, scatter, title, fig, ysize, disp)
     else
         if disp
             if fig != ""
                 plt.figure(fig)
+            end
+            if title != ""
+                plt.title(title)
             end
             colors=["green", "grey", "red"]
             lns = []
@@ -118,7 +126,7 @@ function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Numb
         else
             println("OK")
         end
-        PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, fig, 5)
+        PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, title, fig, 5)
     end
     
 end
@@ -126,11 +134,14 @@ end
 function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number}; 
               xlabel="", ylabels=["", ""], labels=["", ""], 
               xlims=nothing, ylims=nothing, ann=nothing, scatter=false,
-              fig="", ysize=14, disp=false)
+              title="", fig="", ysize=14, disp=false)
     local l1, l2
     if disp
         if fig != ""
             plt.figure(fig)
+        end
+        if title != ""
+            plt.title(title)
         end
         if labels == ["", ""]
             labels = ylabels
@@ -175,19 +186,22 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
     else
         println("OK")
     end
-    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, fig, 5)
+    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, xlims, ylims, ann, scatter, title, fig, 5)
 end
 
-function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", fig="", ysize=14, disp=false)
+function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", title="", fig="", ysize=14, disp=false)
     X = 1:length(Y)
-    plot(X, Y; xlabel, ylabel, fig, disp, ysize)
+    plot(X, Y; xlabel, ylabel, title, fig, disp, ysize)
 end
 
 function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing, 
-              scatter=false, fig="", ysize=14, disp=false)
+              scatter=false, title="", fig="", ysize=14, disp=false)
     if disp
         if fig != ""
             plt.figure(fig)
+        end
+        if title != ""
+            plt.title(title)
         end
         plt.plot(X, Y; label=ylabel)
         if xlabel != ""
@@ -212,6 +226,6 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
         plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
-    PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, fig, 1)
+    PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, title, fig, 1)
 end
 

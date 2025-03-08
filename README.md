@@ -10,6 +10,7 @@ This package provides the following features:
 - an oscilloscope-like plot with multiple channels can be created
   with the `plotx()` function
 - an XY plot can be created with the `plotxy()` function
+- the `plot2d` function can create fast animations of particle systems, connected with segments
 - bode plots using the `bode_plot()` function
 - pan and zoom are supported
 - LaTeX can be used for the labels
@@ -21,7 +22,6 @@ This package provides the following features:
 
 ## TODO
 - add support for PythonPlot
-- allow changing of the caption
 - the `save()` function should allow storing a plot as jld2, pdf or png file
 </details>
 
@@ -69,7 +69,6 @@ pkg"add ControlPlots"
 </details>
 
 ## Usage
-
 ### Basic example
 Launch Julia with `julia --project`. Then execute:
 ```julia
@@ -103,8 +102,25 @@ The plot is automatically displayed.
 Full function signature:
 ```julia
 plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", ylabel="", labels=nothing,
-     xlims=nothing, ylims=nothing, ann=nothing, scatter=false, fig="", ysize=14, disp=false)
+     xlims=nothing, ylims=nothing, ann=nothing, scatter=false, title="", fig="", ysize=14, disp=false)
 ```
+
+### Running the examples
+Create a project folder and start Julia:
+```bash
+mkdir examples
+cd examples
+julia --project=.
+```
+Add the package, and install and run the examples:
+```julia
+using Pkg
+pkg"add ControlPlots"
+using ControlPlots
+ControlPlots.install_examples()
+include("examples/menu.jl")
+```
+You should now see a menu with all the examples. Select one by using the \<UP\> and \<DOWN\> keys and press \<ENTER\> to run the example.
 
 ### Multi-channel plot
 ```julia
@@ -123,6 +139,22 @@ plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing
                scatter=false, fig="", title="", ysize=14, yzoom=1.0, disp=false)
 ```
 The optional parameter `ysize` can be used to change the size of the y-axis labels. The default value is 14 points.
+
+### **n x m** Plot
+You can put more than one time series in on of the vertically aligned plots, showed before. This is for example useful for combining set value and actual value of a signal in one plot.
+
+```julia
+using ControlPlots
+
+T = 0:0.1:2pi
+Y1 = sin.(T)
+Y2 = 0.2*sin.(2T)
+Y = cos.(T)
+plotx(T, [Y1, Y2], Y; ylabels=["sin","cos"], labels=[["Y1","Y2"]], 
+        fig="multi-channel-dual", title="multi-channel-dual.jl")
+```
+It is sufficient to pass one or more vectors of time series to the `plotx` function. In this case the labels have to be a vector of vectors.
+<p align="center"><img src="./docs/multi-channel-dual.png" width="400" /></p>
 
 ### XY-Plot
 ```julia
