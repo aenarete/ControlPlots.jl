@@ -2,6 +2,10 @@
 #### Added
 - the function `plot2d` allows now to create moving plots of any graph consisting of points and segments
 - the example `plot2d-seg.jl` and tests were added
+- the script `menu()` was added
+- the function `ControlPlots.install_examples()` was added
+#### Changed
+- README.md was updated
 
 ### ControlPlots.jl v0.2.5 2024-12-31
 #### Added
