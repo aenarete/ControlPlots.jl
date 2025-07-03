@@ -59,8 +59,10 @@ If not done yet, create a project:
 ```bash
 mkdir MyProject
 cd MyProject
-julia --project="."
+julia --project=.
 ```
+Don't forget to type the `dot` at the end of the last line.
+
 Install Python, matplotlib and ControlPlots
 ```julia
 using Pkg
@@ -81,8 +83,9 @@ If not done yet, create a project:
 ```bash
 mkdir MyProject
 cd MyProject
-julia --project="."
+julia --project=.
 ```
+Don't forget to type the `dot` at the end of the last line.
 
 Install Python, matplotlib and ControlPlots
 ```julia
