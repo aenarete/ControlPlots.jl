@@ -62,7 +62,30 @@ cd MyProject
 julia --project="."
 ```
 Install Python, matplotlib and ControlPlots
+```julia
+using Pkg
+ENV["PYTHON"]=""
+pkg"add ControlPlots"
 ```
+</details>
+<details>
+  <summary>Installation on Mac</summary>
+
+### On Mac
+First, delete any old, Julia specific Python installation:
+```bash
+rm -rf ~/.julia/conda
+```
+
+If not done yet, create a project:
+```bash
+mkdir MyProject
+cd MyProject
+julia --project="."
+```
+
+Install Python, matplotlib and ControlPlots
+```julia
 using Pkg
 ENV["PYTHON"]=""
 pkg"add ControlPlots"
