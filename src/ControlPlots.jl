@@ -25,6 +25,7 @@ mutable struct PlotX
     scatter
     title
     fig
+    bottom
     type::Int64
 end
 
@@ -56,7 +57,7 @@ function plotxy(X, Y; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=no
         plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
-    PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, title, fig, 3)
+    PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 3)
 end
 
 function display(P::PlotX)
@@ -65,7 +66,7 @@ function display(P::PlotX)
              scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, disp=true)
     elseif P.type == 2
         plotx(P.X, P.Y...; xlabel=P.xlabel, ylabels=P.ylabels, labels=P.labels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
-              scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, yzoom=P.yzoom, disp=true)
+              scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, yzoom=P.yzoom, bottom=P.bottom, disp=true)
     elseif P.type == 3
         plotxy(P.X, P.Y; xlabel=P.xlabel, ylabel=P.ylabels, xlims=P.xlims, ylims=P.ylims, ann=P.ann, 
                scatter=P.scatter, fig=P.fig, title=P.title, ysize=P.ysize, disp=true)

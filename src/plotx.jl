@@ -1,6 +1,6 @@
 """
     plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, title="", fig="", title="", ysize=14, yzoom=1.0, disp=false)
+               scatter=false, title="", fig="", title="", ysize=14, yzoom=1.0, bottom=nothing, disp=false)
 
 Create an oscilloscope like plot with multiple y axes and one x axis.
 
@@ -18,10 +18,11 @@ Create an oscilloscope like plot with multiple y axes and one x axis.
 - `title::String`: title
 - `ysize::Int`: y-axis label size
 - `yzoom::Float64`: y-axis zoom factor
+- `bottom::Float64`: bottom margin for the plot
 - `disp::Bool`: display plot or just return the PlotX struct
 """
 function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, title="", fig="", ysize=14, yzoom=1.0, disp=false)
+               scatter=false, title="", fig="", ysize=14, yzoom=1.0, bottom=nothing, disp=false)
     if disp
         len=length(Y)
         fig_ = plt.figure(fig, figsize=(8, len*2*yzoom))
@@ -78,7 +79,11 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
         end
         plt.xlabel(xlabel, fontsize=14)
         
-        plt.tight_layout()
+        if !isnothing(bottom)
+            plt.tight_layout(rect=[0, bottom, 1, 1])
+        else
+            plt.tight_layout()
+        end
     end
-    PlotX(collect(X), Y, labels, xlabel, ylabels, ysize, yzoom, xlims, ylims, ann, scatter, title, fig, 2)
+    PlotX(collect(X), Y, labels, xlabel, ylabels, ysize, yzoom, xlims, ylims, ann, scatter, title, fig, bottom, 2)
 end
