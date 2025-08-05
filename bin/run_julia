@@ -6,4 +6,4 @@ fi
 
 export MPLBACKEND=qt5agg
 
-julia --project
+julia --project -i -e 'menu() = include("examples/menu.jl")'
