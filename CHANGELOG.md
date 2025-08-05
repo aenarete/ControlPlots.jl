@@ -1,3 +1,10 @@
+### ControlPlots.jl v0.2.8 2025-08-05
+#### Added
+- the `plotx` function now supports an optional `bottom` parameter to control the bottom margin of the plot using `plt.tight_layout(rect=[0, bottom, 1, 1])`
+- the `PlotX` struct now includes a `bottom` field to store the bottom margin parameter
+#### Changed
+- updated documentation in README.md to include the new `bottom` parameter
+
 ### ControlPlots.jl v0.2.7 2025-03-08
 #### Added
 - all plot functions have now the optional parameter `title`
