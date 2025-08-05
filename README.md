@@ -162,8 +162,9 @@ p = plotx(T, Y1, Y2; ylabels=["Y1", "Y2"], fig="dual")
 
 Full function signature:
 ```julia
-plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, fig="", title="", ysize=14, yzoom=1.0, bottom=nothing, disp=false)
+plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, 
+      ylims=nothing, ann=nothing, scatter=false, fig="", title="", ysize=14, 
+      yzoom=1.0, bottom=nothing, disp=false)
 ```
 The optional parameter `ysize` can be used to change the size of the y-axis labels. The default value is 14 points.
 The optional parameter `bottom` can be used to control the bottom margin of the plot when using `plt.tight_layout(rect=[0, bottom, 1, 1])`. When `nothing`, the default tight layout is used.
