@@ -1,6 +1,6 @@
 """
     plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, title="", fig="", title="", ysize=14, legend_size=10, yzoom=1.0, bottom=nothing, disp=false)
+               scatter=false, title="", fig="", title="", ysize=14, legend_size=10, loc="best", yzoom=1.0, bottom=nothing, disp=false)
 
 Create an oscilloscope like plot with multiple y axes and one x axis.
 
@@ -18,12 +18,13 @@ Create an oscilloscope like plot with multiple y axes and one x axis.
 - `title::String`: title
 - `ysize::Int`: y-axis label size
 - `legend_size::Int`: legend font size
+- `loc::String`: legend location (e.g., "best", "upper right", "lower left", etc.)
 - `yzoom::Float64`: y-axis zoom factor
 - `bottom::Float64`: bottom margin for the plot
 - `disp::Bool`: display plot or just return the PlotX struct
 """
 function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, title="", fig="", ysize=14, legend_size=10, yzoom=1.0, bottom=nothing, disp=false)
+               scatter=false, title="", fig="", ysize=14, legend_size=10, loc="best", yzoom=1.0, bottom=nothing, disp=false)
     if disp
         len=length(Y)
         fig_ = plt.figure(fig, figsize=(8, len*2*yzoom))
@@ -69,7 +70,7 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
             plt.xlim(X[begin], X[end])
             plt.ylabel(ylbl; fontsize=ysize);  
             if ! isnothing(lbl) && lbl != ""
-                plt.legend(fontsize=legend_size)
+                plt.legend(fontsize=legend_size, loc=loc)
             end
             plt.grid(true)
             plt.grid(which="major", color="#DDDDDD")
@@ -86,5 +87,5 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
             plt.tight_layout()
         end
     end
-    PlotX(collect(X), Y, labels, xlabel, ylabels, ysize, legend_size, yzoom, xlims, ylims, ann, scatter, title, fig, bottom, 2)
+    PlotX(collect(X), Y, labels, xlabel, ylabels, ysize, legend_size, loc, yzoom, xlims, ylims, ann, scatter, title, fig, bottom, 2)
 end

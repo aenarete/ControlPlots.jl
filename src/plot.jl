@@ -86,7 +86,7 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
     else
         println("OK")
     end
-    PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 4)
+    PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 4)
 end
 
 function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Number}; 
@@ -126,7 +126,7 @@ function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Numb
         else
             println("OK")
         end
-        PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 5)
+        PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 5)
     end
     
 end
@@ -186,7 +186,7 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
     else
         println("OK")
     end
-    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 5)
+    PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 5)
 end
 
 function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", title="", fig="", ysize=14, disp=false)
@@ -226,6 +226,6 @@ function plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothin
         plt.grid(which="major", color="#DDDDDD")
         plt.tight_layout()
     end
-    PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 1)
+    PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 1)
 end
 
