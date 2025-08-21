@@ -1,3 +1,12 @@
+### ControlPlots.jl v0.2.9 2025-08-21
+#### Added
+- the `plotx` function now supports an optional `legend_size` parameter to control the font size of the legend (default: 10 points)
+- the `plotx` function now supports an optional `loc` parameter to control the legend location (default: "best")
+- the `PlotX` struct now includes `legend_size` and `loc` fields to store these legend parameters
+#### Changed
+- updated documentation in README.md to include the new `legend_size` and `loc` parameters
+- the `plt.legend()` call in `plotx` now uses the `legend_size` and `loc` parameters for better legend customization
+
 ### ControlPlots.jl v0.2.8 2025-08-05
 #### Added
 - the `plotx` function now supports an optional `bottom` parameter to control the bottom margin of the plot using `plt.tight_layout(rect=[0, bottom, 1, 1])`
