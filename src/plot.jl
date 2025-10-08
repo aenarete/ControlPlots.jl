@@ -184,7 +184,7 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
 end
 
 function plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", title="", fig="", ysize=14, disp=false)
-    X = 1:length(Y)
+    X = collect(eachindex(Y))
     plot(X, Y; xlabel, ylabel, title, fig, disp, ysize)
 end
 

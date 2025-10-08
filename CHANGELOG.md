@@ -2,6 +2,7 @@
 #### Changed
 - do not print OK when calling plot any longer
 - document the use of the fig parameter with the function plot2d
+- the single-argument `plot(Y)` now uses `eachindex(Y)` instead of `1:length(Y)` for better generality with custom-indexed arrays
 
 ### ControlPlots.jl v0.2.9 2025-08-21
 #### Added
