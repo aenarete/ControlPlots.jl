@@ -1,6 +1,7 @@
 ### ControlPlots.jl v0.2.10 2025-10-08
 #### Changed
 - do not print OK when calling plot any longer
+- document the use of the fig parameter with the function plot2d
 
 ### ControlPlots.jl v0.2.9 2025-08-21
 #### Added
