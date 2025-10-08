@@ -254,7 +254,7 @@ x0 = 2.0
 z0 = 0.0
 for t in 0:0.1:5
     global x0, z0
-    plot2d([[1,0,0], [x0,0,z0]], t; segments=1)
+    plot2d([[1,0,0], [x0,0,z0]], t; segments=1, fig="plot2d")
     x0 += 0.1; z0 += 0.1
     sleep(0.1)
 end
@@ -284,7 +284,7 @@ for t in 0:0.05:5
     ]
     
     # Plot the triangle
-    plot2d(points, segments, t; zoom=false, xlim=(0, 5), ylim=(0, 3))
+    plot2d(points, segments, t; zoom=false, xlim=(0, 5), ylim=(0, 3), fig="triangle")
     sleep(0.05)
 end
 ```
