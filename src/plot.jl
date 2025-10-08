@@ -83,8 +83,6 @@ function plot(X, Ys::AbstractVector{<:Union{AbstractVector, Tuple}}; xlabel="", 
         plt.grid(which="major", color="#DDDDDD")
         plt.legend()
         plt.tight_layout()
-    else
-        println("OK")
     end
     PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 4)
 end
@@ -123,8 +121,6 @@ function plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Numb
             plt.grid(which="major", color="#DDDDDD")
             plt.legend(lns, labels, loc="best")
             plt.tight_layout()
-        else
-            println("OK")
         end
         PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 5)
     end
@@ -183,8 +179,6 @@ function plot(X, Y1::AbstractVector{<:Number}, Y2::AbstractVector{<:Number};
         lns = [l1, l2]
         plt.legend(lns, labels, loc="best")
         plt.tight_layout()
-    else
-        println("OK")
     end
     PlotX(X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 5)
 end
