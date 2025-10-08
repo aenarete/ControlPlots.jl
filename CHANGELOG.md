@@ -1,3 +1,7 @@
+### ControlPlots.jl v0.2.10 2025-10-08
+#### Changed
+- do not print OK when calling plot any longer
+
 ### ControlPlots.jl v0.2.9 2025-08-21
 #### Added
 - the `plotx` function now supports an optional `legend_size` parameter to control the font size of the legend (default: 10 points)
