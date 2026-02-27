@@ -233,7 +233,7 @@ function plot(
         plt.grid(true)
         plt.grid(which = "major", color = "#DDDDDD")
         plt.tight_layout()
-        if isapple()
+        if Sys.isapple()
             plt.show(block = true)
         end
     end
