@@ -1,3 +1,8 @@
+
+### ControlPlots.jl v0.2.11 2026-02-27
+#### Changed
+- use qtagg backend on Mac to avoid crashes
+
 ### ControlPlots.jl v0.2.10 2025-10-08
 #### Changed
 - do not print OK when calling plot any longer
