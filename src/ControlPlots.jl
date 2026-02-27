@@ -7,6 +7,20 @@ import JLD2
 using StaticArraysCore
 using Pkg
 
+function __init__()
+    if !Sys.isapple()
+        return
+    end
+    backend = lowercase(string(plt.matplotlib.get_backend()))
+    if occursin("tkagg", backend)
+        try
+            plt.matplotlib.use("qtagg", force = true)
+        catch
+        end
+    end
+    return
+end
+
 export plot, plotx, plotxy, plot2d, plt, load, save, savefig, bode_plot
 
 function bode_plot end
