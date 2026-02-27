@@ -86,6 +86,9 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
         else
             plt.tight_layout()
         end
+        if Sys.isapple()
+            plt.show(block = true)
+        end
     end
     PlotX(collect(X), Y, labels, xlabel, ylabels, ysize, legend_size, loc, yzoom, xlims, ylims, ann, scatter, title, fig, bottom, 2)
 end
