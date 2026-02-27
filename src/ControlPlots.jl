@@ -8,15 +8,18 @@ using StaticArraysCore
 using Pkg
 
 function __init__()
-    if !Sys.isapple() || isnothing(plt)
+    if !Sys.isapple()
         return
     end
-    backend = lowercase(string(plt.matplotlib.get_backend()))
-    if occursin("tkagg", backend)
-        try
-            plt.matplotlib.use("qtagg", force = true)
-        catch
+    try
+        backend = lowercase(string(plt.matplotlib.get_backend()))
+        if occursin("tkagg", backend)
+            try
+                plt.matplotlib.use("qtagg", force = true)
+            catch
+            end
         end
+    catch
     end
     return
 end
