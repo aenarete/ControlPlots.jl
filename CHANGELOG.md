@@ -1,3 +1,6 @@
+### ControlPlots.jl v0.2.12 2026-02-28
+#### Changed
+- make plot and plotx blocking on MacOS
 
 ### ControlPlots.jl v0.2.11 2026-02-27
 #### Changed
