@@ -1,3 +1,8 @@
+### ControlPlots.jl v0.2.1 2026-02-28
+#### Changed
+- add missing blocking on MacOS
+- fix precompilation error of extension
+
 ### ControlPlots.jl v0.2.12 2026-02-28
 #### Changed
 - make plot and plotx blocking on MacOS
