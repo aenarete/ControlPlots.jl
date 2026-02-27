@@ -28,10 +28,10 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
     if disp
         len=length(Y)
         fig_name = fig
-        fig_ = plt.figure(fig_name, figsize=(8, len*2*yzoom), clear=true)
+        _fig = plt.figure(fig_name, figsize=(8, len*2*yzoom), clear=true)
         ax=[]
         for (i,y) in pairs(Y)
-            subplot=100len+10+i
+            subplot = 100len + 10 + i
             if i==1
                 push!(ax, plt.subplot(subplot))
             else
@@ -78,7 +78,6 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
             if i < len
                 plt.setp(ax[i].get_xticklabels(), visible=false)
             end
-            i+=1
         end
         plt.xlabel(xlabel, fontsize=14)
         
