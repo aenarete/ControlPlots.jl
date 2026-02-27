@@ -233,6 +233,9 @@ function plot(
         plt.grid(true)
         plt.grid(which = "major", color = "#DDDDDD")
         plt.tight_layout()
+        if isapple()
+            plt.show(block = true)
+        end
     end
     return PlotX(
         X, Y, nothing, xlabel, ylabel, ysize, nothing, nothing, nothing,

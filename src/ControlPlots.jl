@@ -8,7 +8,7 @@ using StaticArraysCore
 using Pkg
 
 function __init__()
-    if !Sys.isapple()
+    if !Sys.isapple() || isnothing(plt)
         return
     end
     backend = lowercase(string(plt.matplotlib.get_backend()))
