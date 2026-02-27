@@ -85,6 +85,9 @@ function plot(
         plt.grid(which = "major", color = "#DDDDDD")
         plt.legend()
         plt.tight_layout()
+        if Sys.isapple()
+            plt.show(block = true)
+        end
     end
     return PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 4)
 end
@@ -125,6 +128,9 @@ function plot(
             plt.grid(which = "major", color = "#DDDDDD")
             plt.legend(lns, labels, loc = "best")
             plt.tight_layout()
+            if Sys.isapple()
+                plt.show(block = true)
+            end
         end
         PlotX(
             X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, nothing,
@@ -188,6 +194,9 @@ function plot(
         lns = [l1, l2]
         plt.legend(lns, labels, loc = "best")
         plt.tight_layout()
+        if Sys.isapple()
+            plt.show(block = true)
+        end
     end
     return PlotX(
         X, [Y1, Y2], labels, xlabel, ylabels, ysize, nothing, nothing, nothing,
