@@ -1,4 +1,5 @@
 using ControlPlots
+using ControlPlots: plt
 
 # Initial position parameters
 x0 = -1.0    # horizontal position
@@ -48,7 +49,7 @@ for t in 0:0.05:7
     # Plot the stick figure
     plot2d(points, segments, t; zoom=false, xlim=(0, 5), ylim=(0, 5))
     if SAVE
-        ControlPlots.plt.savefig("video/"*"img-"*lpad(j, 4, "0"))
+        plt.savefig("video/"*"img-"*lpad(j, 4, "0"))
     end
     j += 1
     sleep(0.05)
