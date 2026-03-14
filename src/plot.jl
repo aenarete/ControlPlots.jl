@@ -146,7 +146,8 @@ function plot(
         xlims = nothing, ylims = nothing, ann = nothing, scatter = false,
         title = "", fig = "", ysize = 14, disp = false
     )
-    local l1, l2
+    l1 = nothing
+    l2 = nothing
     if disp
         if fig != ""
             plt.figure(fig)
@@ -157,35 +158,31 @@ function plot(
         if labels == ["", ""]
             labels = ylabels
         end
-        for (i, Y) in pairs([Y1, Y2])
+        l1, = plt.plot(X, Y1; label = labels[1], color = "green")
+        if xlabel != ""
+            plt.xlabel(xlabel, fontsize = 14)
+        end
+        if ylabels != ["", ""]
+            plt.ylabel(ylabels[1], fontsize = ysize)
+        end
+        if ! isnothing(ylims)
+            plt.ylim(ylims[1])
+        end
+        if scatter
+            plt.scatter(X, Y1; s = 24, c = "red", alpha = 1)
+        end
 
-            if i == 1
-                l1, = plt.plot(X, Y; label = labels[i], color = "green")
-                if xlabel != ""
-                    plt.xlabel(xlabel, fontsize = 14)
-                end
-                if ylabels != ["", ""]
-                    plt.ylabel(ylabels[1], fontsize = ysize)
-                end
-                if ! isnothing(ylims)
-                    plt.ylim(ylims[1])
-                end
-                if scatter
-                    plt.scatter(X, Y; s = 24, c = "red", alpha = 1)
-                end
-                plt.twinx()
-            else
-                l2, = plt.plot(X, Y; label = labels[i], color = "red")
-                if ylabels[2] != ""
-                    plt.ylabel(ylabels[2], fontsize = ysize)
-                end
-                if ! isnothing(ylims)
-                    plt.ylim(ylims[2])
-                end
-                if scatter
-                    plt.scatter(X, Y; s = 24, c = "red", alpha = 1)
-                end
-            end
+        plt.twinx()
+
+        l2, = plt.plot(X, Y2; label = labels[2], color = "red")
+        if ylabels[2] != ""
+            plt.ylabel(ylabels[2], fontsize = ysize)
+        end
+        if ! isnothing(ylims)
+            plt.ylim(ylims[2])
+        end
+        if scatter
+            plt.scatter(X, Y2; s = 24, c = "red", alpha = 1)
         end
 
         plt.grid(true)

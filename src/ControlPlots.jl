@@ -131,7 +131,7 @@ function copy_examples()
     if ! isdir(PATH)
         mkdir(PATH)
     end
-    src_path = joinpath(dirname(pathof(@__MODULE__)), "..", PATH)
+    src_path = joinpath(@__DIR__, "..", PATH)
     return copy_files("examples", readdir(src_path))
 end
 
@@ -151,7 +151,7 @@ function copy_files(relpath, files)
     if ! isdir(relpath)
         mkdir(relpath)
     end
-    src_path = joinpath(dirname(pathof(@__MODULE__)), "..", relpath)
+    src_path = joinpath(@__DIR__, "..", relpath)
     for file in files
         cp(joinpath(src_path, file), joinpath(relpath, file), force = true)
         chmod(joinpath(relpath, file), 0o774)
