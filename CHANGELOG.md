@@ -1,6 +1,7 @@
 ## ControlPlots.jl v0.2.14 2026-03-14
 ### Changed
 - add missing blocking on MacOS for the `plotxy` function
+- fix JETLS warnings
 ### Added
 - the file `.markdownlint.json`
 
