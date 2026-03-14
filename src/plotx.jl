@@ -6,7 +6,7 @@ Create an oscilloscope like plot with multiple y axes and one x axis.
 
 # Arguments
 - `X::Vector`: x-axis data
-- `Y::Vector`: any number of comma seperated y-axis vectors
+- `Y::Vector`: any number of comma separated y-axis vectors
 - `xlabel::String`: x-axis label
 - `ylabels::Vector{String}`: y-axis labels  
 - `labels::Vector{String}`: labels for each y-axis
@@ -27,7 +27,7 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
                scatter=false, title="", fig="", ysize=14, legend_size=10, loc="best", yzoom=1.0, bottom=nothing, disp=false)
     if disp
         len=length(Y)
-        fig_ = plt.figure(fig, figsize=(8, len*2*yzoom))
+        fig = plt.figure(fig, figsize=(8, len*2*yzoom))
         ax=[]
         for (i,y) in pairs(Y)
             subplot=100len+10+i

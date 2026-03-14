@@ -151,13 +151,33 @@ function plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsi
     lines, sc, txt  
 end
 
-plot2d__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
-    function(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dpi=100, kwargs...)
-        if reltime == 0.0
-            lines, sc, txt = nothing, nothing, nothing
-        end
-        lines, sc, txt = plot2d_(pos, reltime; lines, sc, txt, fig, figsize, dpi, kwargs...)
+const _plot2d_state = (
+    lines = Ref{Any}(nothing),
+    sc = Ref{Any}(nothing),
+    txt = Ref{Any}(nothing),
+)
+
+function plot2d__(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dpi=100, kwargs...)
+    if reltime == 0.0
+        _plot2d_state.lines[] = nothing
+        _plot2d_state.sc[] = nothing
+        _plot2d_state.txt[] = nothing
     end
+    lines, sc, txt = plot2d_(
+        pos,
+        reltime;
+        lines = _plot2d_state.lines[],
+        sc = _plot2d_state.sc[],
+        txt = _plot2d_state.txt[],
+        fig,
+        figsize,
+        dpi,
+        kwargs...,
+    )
+    _plot2d_state.lines[] = lines
+    _plot2d_state.sc[] = sc
+    _plot2d_state.txt[] = txt
+    return lines, sc, txt
 end
 
 """
@@ -186,13 +206,13 @@ function plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dp
 end
 
 """
-    plot2d(pos_matix::AbstractMatrix, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, 
+    plot2d(pos_matrix::AbstractMatrix, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, 
            dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing)
 
 Display a video-like 2D particle system by calling `plot2d` in a loop.
 
 # Arguments
-- `pos_matix`: a matrix of 3D coordinates
+- `pos_matrix`: a matrix of 3D coordinates
 - `reltime`: The relative time. When called the first time, set to `0.0`.
 - `zoom`: Whether to enable zooming (default: `false`).
 - `front`: Whether using a front view (default: `false`, which means side view).
@@ -272,7 +292,7 @@ function plot2d_with_segments_(pos, seg, reltime; zoom=true, front=false, fig=""
         end
         
         # Draw segments according to user-defined indices
-        for (i, segment) in enumerate(seg)
+        for (_, segment) in enumerate(seg)
             idx1, idx2 = segment
             line, = plt.plot([x[idx1], x[idx2]], [z[idx1], z[idx2]], linewidth="1")
             push!(lines, line)
@@ -331,13 +351,31 @@ function plot2d_with_segments_(pos, seg, reltime; zoom=true, front=false, fig=""
 end
 
 # Add wrapper functions to maintain backward compatibility and add new functionality
-plot2d_with_segments__ = let lines = nothing, sc = nothing, txt = nothing  # Note: Must all be on same line as let!
-    function(pos::AbstractVector, seg::Vector{<:AbstractVector{<:Integer}}, reltime=0.0; kwargs...)
-        if reltime == 0.0
-            lines, sc, txt = nothing, nothing, nothing
-        end
-        lines, sc, txt = plot2d_with_segments_(pos, seg, reltime; lines, sc, txt, kwargs...)
+const _plot2d_segments_state = (
+    lines = Ref{Any}(nothing),
+    sc = Ref{Any}(nothing),
+    txt = Ref{Any}(nothing),
+)
+
+function plot2d_with_segments__(pos::AbstractVector, seg::Vector{<:AbstractVector{<:Integer}}, reltime=0.0; kwargs...)
+    if reltime == 0.0
+        _plot2d_segments_state.lines[] = nothing
+        _plot2d_segments_state.sc[] = nothing
+        _plot2d_segments_state.txt[] = nothing
     end
+    lines, sc, txt = plot2d_with_segments_(
+        pos,
+        seg,
+        reltime;
+        lines = _plot2d_segments_state.lines[],
+        sc = _plot2d_segments_state.sc[],
+        txt = _plot2d_segments_state.txt[],
+        kwargs...,
+    )
+    _plot2d_segments_state.lines[] = lines
+    _plot2d_segments_state.sc[] = sc
+    _plot2d_segments_state.txt[] = txt
+    return lines, sc, txt
 end
 
 """
