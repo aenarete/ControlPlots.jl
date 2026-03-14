@@ -77,6 +77,9 @@ function plotxy(
         plt.grid(true)
         plt.grid(which = "major", color = "#DDDDDD")
         plt.tight_layout()
+        if Sys.isapple()
+            plt.show(block = true)
+        end
     end
     return PlotX(X, Y, nothing, xlabel, ylabel, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 3)
 end
