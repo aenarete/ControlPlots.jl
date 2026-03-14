@@ -1,10 +1,10 @@
-## ControlPlots.jl v0.2.2 2026-03-14
+## ControlPlots.jl v0.2.14 2026-03-14
 ### Changed
 - add missing blocking on MacOS for the `plotxy` function
 ### Added
 - the file `.markdownlint.json`
 
-## ControlPlots.jl v0.2.1 2026-02-28
+## ControlPlots.jl v0.2.13 2026-02-28
 ### Changed
 - add missing blocking on MacOS
 - fix precompilation error of extension
