@@ -1,22 +1,26 @@
+## ControlPlots.jl v0.2.15 2026-05-05
+### Changed
+- fix missing clear for `plotx`
+
 ## ControlPlots.jl v0.2.14 2026-03-14
 ### Changed
-- add missing blocking on MacOS for the `plotxy` function
+- add missing blocking on macOS for the `plotxy` function
 - fix JETLS warnings
 ### Added
-- the file `.markdownlint.json`
+- add the file `.markdownlint.json`
 
 ## ControlPlots.jl v0.2.13 2026-02-28
 ### Changed
-- add missing blocking on MacOS
+- add missing blocking on macOS
 - fix precompilation error of extension
 
 ## ControlPlots.jl v0.2.12 2026-02-28
 ### Changed
-- make plot and plotx blocking on MacOS
+- make plot and plotx blocking on macOS
 
 ## ControlPlots.jl v0.2.11 2026-02-27
 ### Changed
-- use qtagg backend on Mac to avoid crashes
+- use qtagg backend on macOS to avoid crashes
 
 ## ControlPlots.jl v0.2.10 2025-10-08
 ### Changed
