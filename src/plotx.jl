@@ -27,7 +27,8 @@ function plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlim
                scatter=false, title="", fig="", ysize=14, legend_size=10, loc="best", yzoom=1.0, bottom=nothing, disp=false)
     if disp
         len=length(Y)
-        fig = plt.figure(fig, figsize=(8, len*2*yzoom))
+        fig_name = fig
+        fig_ = plt.figure(fig_name, figsize=(8, len*2*yzoom), clear=true)
         ax=[]
         for (i,y) in pairs(Y)
             subplot=100len+10+i
