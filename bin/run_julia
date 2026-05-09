@@ -7,4 +7,4 @@ fi
 export MPLBACKEND=qt5agg
 export JULIA_PKG_SERVER_REGISTRY_PREFERENCE=eager
 
-julia --project -i -e 'menu() = include("examples/menu.jl")'
+julia --project -i -e 'menu() = include("examples/menu.jl")' "$@"
