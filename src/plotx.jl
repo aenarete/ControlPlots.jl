@@ -1,6 +1,6 @@
 """
     plotx(X, Y...; xlabel="time [s]", ylabels=nothing, labels=nothing, xlims=nothing, ylims=nothing, ann=nothing, 
-               scatter=false, title="", fig="", title="", ysize=14, legend_size=10, loc="best", yzoom=1.0, bottom=nothing, disp=false)
+               scatter=false, title="", fig="", ysize=14, legend_size=10, loc="best", yzoom=1.0, bottom=nothing, disp=false)
 
 Create an oscilloscope like plot with multiple y axes and one x axis.
 

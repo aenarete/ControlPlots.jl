@@ -1,6 +1,6 @@
 """
-    plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsize=(6.4, 4.8), dz_zoom=1.5, dz=-5.0, 
-            dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
+    plot2d_(pos, reltime; zoom=true, front=false, segments=6, fig="", figsize=(6.4, 4.8), dz_zoom=1.5, dpi=100,
+            dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing, lines, sc, txt)
 
 Display a video-like 2D particle system by calling `plot2d` in a loop.
 
@@ -11,7 +11,8 @@ Display a video-like 2D particle system by calling `plot2d` in a loop.
 - `front`: Whether using a front view (default: `false`).
 - `segments`: The number of tether segments (default: `6`).
 - `fig`: The name of the figure to display (default: `""`).
-- `figsize: The size of the figure in inch (default: `(6.4, 4.8)`).
+- `figsize`: The size of the figure in inch (default: `(6.4, 4.8)`).
+- `dpi`: The resolution of the figure in dots per inch (default: `100`).
 - `dz_zoom`: The z-axis offset in zoom view (default: `1.5`).
 - `dz`: The z-axis offset in normal view (default: `-5.0`).
 - `dx`: The x-axis offset (default: `-16.0`).
@@ -181,18 +182,21 @@ function plot2d__(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), 
 end
 
 """
-    plot2d(pos::AbstractVector, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, 
-           dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing)
+    plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dpi=100, kwargs...)
 
 Display a video-like 2D particle system by calling `plot2d` in a loop.
 
 # Arguments
 - `pos`: a vector of 3D positions.
 - `reltime`: The relative time. When called the first time, set to `0.0`.
+
+# Optional Arguments
+- `fig`: The name of the figure to display (default: `""`).
+- `figsize`: The size of the figure in inches (default: `(6.4, 4.8)`).
+- `dpi`: The resolution of the figure (default: `100`).
 - `zoom`: Whether to enable zooming (default: `true`).
 - `front`: Whether using a front view (default: `false`, which means side view).
 - `segments`: The number of tether segments (default: `6`).
-- `fig`: The name of the figure to display (default: `""`).
 - `dz_zoom`: The z-axis offset in zoom view (default: `1.5`).
 - `dz`: The z-axis offset in normal view (default: `-5.0`).
 - `dx`: The x-axis offset (default: `-16.0`).
@@ -206,18 +210,21 @@ function plot2d(pos::AbstractVector, reltime=0.0; fig="", figsize=(6.4, 4.8), dp
 end
 
 """
-    plot2d(pos_matrix::AbstractMatrix, reltime; zoom=true, front=false, segments=6, fig="", dz_zoom=1.5, 
-           dz=-5.0, dx=-16.0, xlim=nothing, ylim=nothing, xy=nothing)
+    plot2d(pos_matrix::AbstractMatrix, reltime; segments=6, kwargs...)
 
-Display a video-like 2D particle system by calling `plot2d` in a loop.
+Display a video-like 2D particle system from a matrix of coordinates.
 
 # Arguments
-- `pos_matrix`: a matrix of 3D coordinates
+- `pos_matrix`: a matrix of 3D coordinates.
 - `reltime`: The relative time. When called the first time, set to `0.0`.
-- `zoom`: Whether to enable zooming (default: `false`).
-- `front`: Whether using a front view (default: `false`, which means side view).
+
+# Optional Arguments
 - `segments`: The number of tether segments (default: `6`).
+- `zoom`: Whether to enable zooming (default: `true`).
+- `front`: Whether using a front view (default: `false`, which means side view).
 - `fig`: The name of the figure to display (default: `""`).
+- `figsize`: The size of the figure in inches (default: `(6.4, 4.8)`).
+- `dpi`: The resolution of the figure (default: `100`).
 - `dz_zoom`: The z-axis offset in zoom view (default: `1.5`).
 - `dz`: The z-axis offset in normal view (default: `-5.0`).
 - `dx`: The x-axis offset (default: `-16.0`).
@@ -387,17 +394,20 @@ Display a 2D plot with user-defined segments connecting points.
 - `pos`: A vector of 3D positions `[[x1,y1,z1], [x2,y2,z2], ...]`.
 - `seg`: A vector of segment definitions `[[index1, index2], [index3, index4], ...]` where indices refer to positions in `pos`.
 - `reltime`: The relative time (default: `0.0`).
+
+# Optional Arguments
 - `zoom`: Whether to enable zooming (default: `true`).
 - `front`: Whether using a front view (default: `false`, which means side view).
 - `fig`: The name of the figure to display (default: `""`).
 - `figsize`: The size of the figure in inches (default: `(6.4, 4.8)`).
 - `dpi`: The resolution of the figure (default: `100`).
 - `dz_zoom`: The z-axis offset in zoom view (default: `1.5`).
-- `dz`: The z-axis offset in normal view (default: `-5.0`).
-- `dx`: The x-axis offset (default: `-16.0`).
+- `dz`: The z-axis offset in normal view (default: `1.0`).
+- `dx`: The x-axis offset (default: `1.0`).
 - `xlim`: The x-axis limits (default: `nothing`).
 - `ylim`: The y-axis limits (default: `nothing`) (for side view the z-axis).
 - `xy`: The x-y coordinates of the text (default: `nothing`) (for side view the z-axis).
+
 """
 function plot2d(pos::AbstractVector, seg::Vector{<:AbstractVector{<:Integer}}, reltime=0.0; kwargs...)
     plot2d_with_segments__(pos, seg, reltime; kwargs...)

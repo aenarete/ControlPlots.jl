@@ -92,6 +92,31 @@ function plot(
     return PlotX(X, Ys, labels, xlabel, ylabel, ysize, nothing, nothing, nothing, xlims, ylims, ann, scatter, title, fig, nothing, 4)
 end
 
+"""
+    plot(X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Number}; xlabel="", ylabels=["", ""], labels=["", ""],
+         xlims=nothing, ylims=nothing, ann=nothing, scatter=false, title="", fig="", ysize=14, disp=false)
+
+Plot multiple curves on the left y-axis and one curve on the right y-axis (dual-axis plot).
+
+# Arguments
+- `X`: The x-axis values.
+- `Y1`: A vector of vectors representing the y-axis values for the left axis.
+- `Y2`: A vector of numbers representing the y-axis values for the right axis.
+
+# Optional Arguments
+- `xlabel`: The label for the x-axis. Default is an empty string.
+- `ylabels`: The labels for the left and right y-axes. Default is `["", ""]`.
+- `labels`: The labels for each curve. Default is `["", ""]`.
+- `xlims`: The limits for the x-axis. Default is `nothing`.
+- `ylims`: The limits for the y-axes as a tuple of two tuples. Default is `nothing`.
+- `ann`: An annotation to be placed on the plot. Default is `nothing`.
+- `scatter`: A boolean indicating whether to plot the points as a scatter plot. Default is `false`.
+- `title`: The title of the figure. Default is an empty string.
+- `fig`: The name of the figure. Default is an empty string.
+- `ysize`: The font size for the y-axis label. Default is 14.
+- `disp`: A boolean indicating whether to display the plot. If false, only create a structure to be displayed later.
+          Default is `false`.
+"""
 function plot(
         X, Y1::AbstractVector{<:AbstractVector}, Y2::AbstractVector{<:Number};
         xlabel = "", ylabels = ["", ""], labels = ["", ""],
@@ -199,11 +224,51 @@ function plot(
     )
 end
 
+"""
+    plot(Y::AbstractVector{<:Number}; xlabel="", ylabel="", title="", fig="", ysize=14, disp=false)
+
+Plot a single vector against its indices.
+
+# Arguments
+- `Y`: A vector of numbers to plot against its indices.
+
+# Optional Arguments
+- `xlabel`: The label for the x-axis. Default is an empty string.
+- `ylabel`: The label for the y-axis. Default is an empty string.
+- `title`: The title of the figure. Default is an empty string.
+- `fig`: The name of the figure. Default is an empty string.
+- `ysize`: The font size for the y-axis label. Default is 14.
+- `disp`: A boolean indicating whether to display the plot. If false, only create a structure to be displayed later.
+          Default is `false`.
+"""
 function plot(Y::AbstractVector{<:Number}; xlabel = "", ylabel = "", title = "", fig = "", ysize = 14, disp = false)
     X = collect(eachindex(Y))
     return plot(X, Y; xlabel, ylabel, title, fig, disp, ysize)
 end
 
+"""
+    plot(X, Y::AbstractVector{<:Number}; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing,
+         scatter=false, title="", fig="", ysize=14, disp=false)
+
+Plot a single curve given by X and Y.
+
+# Arguments
+- `X`: The x-axis values.
+- `Y`: A vector of numbers for the y-axis.
+
+# Optional Arguments
+- `xlabel`: The label for the x-axis. Default is an empty string.
+- `ylabel`: The label for the y-axis. Default is an empty string.
+- `xlims`: The limits for the x-axis. Default is `nothing`.
+- `ylims`: The limits for the y-axis. Default is `nothing`.
+- `ann`: An annotation as a tuple `(x, y, text)`. Default is `nothing`.
+- `scatter`: A boolean indicating whether to plot the points as a scatter plot. Default is `false`.
+- `title`: The title of the figure. Default is an empty string.
+- `fig`: The name of the figure. Default is an empty string.
+- `ysize`: The font size for the y-axis label. Default is 14.
+- `disp`: A boolean indicating whether to display the plot. If false, only create a structure to be displayed later.
+          Default is `false`.
+"""
 function plot(
         X, Y::AbstractVector{<:Number}; xlabel = "", ylabel = "", xlims = nothing, ylims = nothing, ann = nothing,
         scatter = false, title = "", fig = "", ysize = 14, disp = false

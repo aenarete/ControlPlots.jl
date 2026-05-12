@@ -60,6 +60,29 @@ include("plot.jl")
 include("plotx.jl")
 include("plot2d.jl")
 
+"""
+    plotxy(X, Y; xlabel="", ylabel="", xlims=nothing, ylims=nothing, ann=nothing,
+           scatter=false, title="", fig="", ysize=14, disp=false)
+
+Plot a single curve given by X and Y (simple xy-plot).
+
+# Arguments
+- `X`: The x-axis values.
+- `Y`: The y-axis values.
+
+# Optional Arguments
+- `xlabel`: The label for the x-axis. Default is an empty string.
+- `ylabel`: The label for the y-axis. Default is an empty string.
+- `xlims`: The limits for the x-axis. Default is `nothing`.
+- `ylims`: The limits for the y-axis. Default is `nothing`.
+- `ann`: An annotation as a tuple `(x, y, text)`. Default is `nothing`.
+- `scatter`: A boolean indicating whether to plot the points as a scatter plot. Default is `false`.
+- `title`: The title of the figure. Default is an empty string.
+- `fig`: The name of the figure. Default is an empty string.
+- `ysize`: The font size for the y-axis label. Default is 14.
+- `disp`: A boolean indicating whether to display the plot. If false, only create a structure to be displayed later.
+          Default is `false`.
+"""
 function plotxy(
         X, Y; xlabel = "", ylabel = "", xlims = nothing, ylims = nothing, ann = nothing,
         scatter = false, title = "", fig = "", ysize = 14, disp = false

@@ -6,14 +6,14 @@ using ControlPlots, Printf, LaTeXStrings
 import ControlPlots: bode_plot
 
 """
-    frequency_response(sys; from=-6, to=1)
+    frequency_response(sys; from=-1, to=2)
 
 Calculate the response of a linear system in the frequency domain.
 
 Parameters:
 - sys:  linear system
-- from: exp10 of the start frequency, default -6 which means f_start = 10e-6 rad/s
-- to:   exp10 of the stop frequency,  default 1 which means f_stop = 10 rad/s
+- from: exp10 of the start frequency, default -1 which means f_start = 1e-1 rad/s
+- to:   exp10 of the stop frequency,  default 2 which means f_stop = 1e2 rad/s
 
 Returns:
 A tuple of the three vectors w, mag, phase
@@ -30,12 +30,12 @@ end
 todb(mag) = 20 * log10(mag)
 
 """
-    bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-3, to=1, fig=true, db=true, hz=true,
-                                     db=true, hz=true, bw=false, linestyle="solid", show_title=true, fontsize=18)
+    bode_plot(sys::Union{StateSpace, TransferFunction}; title="", from=-1, to=1, fig=true, db=true, hz=true,
+                                     bw=false, linestyle="solid", show_title=true, fontsize=18)
 
 Create a bode plot of a linear system. Parameters:
 - title      (String)
-- from       (min frequency in rad/s, default -3, means 1e-3)
+- from       (min frequency in rad/s, default -1, means 1e-1)
 - to         (max frequency in rad/s, default  1, means 1e1)
 - fig        (default true, create a new figure)
 - db         (default true, use decibel as unit for the magnitude)
