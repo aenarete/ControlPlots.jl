@@ -1,3 +1,13 @@
+## ControlPlots.jl v0.2.16
+### Added
+- add comprehensive docstrings for `plot()`, `plotxy()`, and `plot2d()` functions
+- add `dpi` parameter to `plot2d` for controlling figure resolution
+### Changed
+- fix warnings (remove unused variables)
+- fix docstrings in `ControlPlotsExt.jl` (update default frequency range for `bode_plot`)
+- change default values for `dz` and `dx` in `plot2d` from `(-5.0, -16.0)` to `(1.0, 1.0)`
+- update `run_julia` script to forward arguments
+
 ## ControlPlots.jl v0.2.15 2026-05-05
 ### Changed
 - fix missing clear for `plotx`
