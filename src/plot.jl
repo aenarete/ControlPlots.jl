@@ -146,8 +146,6 @@ function plot(
         xlims = nothing, ylims = nothing, ann = nothing, scatter = false,
         title = "", fig = "", ysize = 14, disp = false
     )
-    l1 = nothing
-    l2 = nothing
     if disp
         if fig != ""
             plt.figure(fig)
