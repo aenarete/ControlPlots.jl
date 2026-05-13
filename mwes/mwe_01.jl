@@ -1,4 +1,4 @@
-using PyPlot
+using PythonPlot
 
 fig=figure("first")
 X = 0:0.1:2pi

@@ -1,6 +1,6 @@
-# for reprducing bug in ControlPlots
+# for reproducing a bug in ControlPlots
 # run this once, close the plot window, then run it again
-# --> crash
+# --> crash (now fixed)
 
 using ControlPlots
 plot2d([[1,0,0], [2,0,0]], 0; segments=1)
