@@ -1,7 +1,6 @@
 module ControlPlots
 
-import PyPlot as plt
-import PyPlot.show as plshow
+import PythonPlot as plt
 import Base.display
 import JLD2
 using StaticArraysCore
