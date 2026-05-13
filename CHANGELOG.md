@@ -1,6 +1,6 @@
 ## ControlPlots.jl v0.3.0 2026-05-13
 ### BREAKING
-- migrate from `PyPlot` to `PythonPlot`. This makes plotting thread-safe, but requires changes to the install script of packages that use an install script.
+- migrate from `PyPlot` to `PythonPlot`. This makes plotting thread-safe, but requires downstream packages to update their build/install scripts or CondaPkg setup.
 
 ## ControlPlots.jl v0.2.16 2026-05-13
 ### Added
