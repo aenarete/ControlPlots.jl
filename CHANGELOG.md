@@ -1,6 +1,8 @@
 ## ControlPlots.jl v0.3.0 2026-05-13
 ### BREAKING
 - migrate from `PyPlot` to `PythonPlot`. This makes plotting thread-safe, but requires downstream packages to update their build/install scripts or CondaPkg setup.
+### Changed
+- update CI.yml to test on Julia 1.11 and 1.12
 
 ## ControlPlots.jl v0.2.16 2026-05-13
 ### Added
