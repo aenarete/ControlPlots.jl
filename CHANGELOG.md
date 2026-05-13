@@ -1,3 +1,7 @@
+## ControlPlots.jl v0.3.0 2026-05-13
+### BREAKING
+- migrate from `PyPlot` to `PythonPlot`. This makes this plotting package thread-safe, but requires changes to the install script of packages that use an install script.
+
 ## ControlPlots.jl v0.2.16 2026-05-13
 ### Added
 - add comprehensive docstrings for `plot()`, `plotxy()`, and `plot2d()` functions
