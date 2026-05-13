@@ -1,4 +1,4 @@
-## ControlPlots.jl v0.2.16
+## ControlPlots.jl v0.2.16 2026-05-13
 ### Added
 - add comprehensive docstrings for `plot()`, `plotxy()`, and `plot2d()` functions
 - add `dpi` parameter to `plot2d` for controlling figure resolution
