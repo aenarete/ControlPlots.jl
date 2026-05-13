@@ -1,4 +1,4 @@
-# for reproducing bug in ControlPlots
+# for reproducing a bug in ControlPlots
 # run this once, close the plot window, then run it again
 # --> crash (now fixed)
 
