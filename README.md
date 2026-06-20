@@ -22,7 +22,6 @@ This package provides the following features:
   <summary>Planned features</summary>
 
 ## TODO
-- add support for PythonPlot
 - the `save()` function should allow storing a plot as jld2, pdf or png file
 </details>
 
