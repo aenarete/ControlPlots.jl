@@ -1,4 +1,4 @@
-/Manifest.toml
+j/Manifest.toml
 .vscode/settings.json
 plot.jld2
 .vscode/launch.json
@@ -7,3 +7,4 @@ video/animation.gif
 examples/Manifest.toml
 Manifest-v1.12.toml
 .CondaPkg/
+install_version_1.12.txt
